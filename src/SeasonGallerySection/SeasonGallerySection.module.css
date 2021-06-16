@@ -1,0 +1,341 @@
+.preContainer {
+    background-color: white;
+}
+
+.loaderDiv img {
+    animation: fadeInOut 1s;
+    width: 15vw;
+}
+
+@keyframes fadeInOut {
+    0% {
+        opacity: 0;
+    }
+    15% {
+        opacity: 0.2;
+    }
+    25% {
+        opacity: 0.5;
+    }
+    45% {
+        opacity: 0.7;
+    }
+    50% {
+        opacity: 1;
+    }
+    84% {
+        opacity: 0.99;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.loaderDiv {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: cssAnimation 0s 1s forwards;
+    visibility: visible;
+}
+
+@keyframes cssAnimation {
+    to { visibility: hidden; }
+}
+
+.container {
+    overflow: hidden;
+    background-color: white;
+    opacity: 0;
+    animation: fadeIn 0.5s;
+    animation-delay: 1s;
+    animation-fill-mode: forwards;
+}
+
+.subColumn {
+    position: relative;
+    left: 5px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0 }
+    to { opacity: 1 }
+}
+
+.firstColumn img {
+    height: 50px;
+    margin: -8px;
+}
+
+.firstColumn button {
+    position: relative;
+    right: 23.5%;
+    padding-left: 8px;
+    max-height: fit-content;
+    max-width: fit-content;
+    margin-top: 16%;
+    margin-bottom: 10px;
+    background: transparent;
+    border: none !important;
+    font-size:0;
+}
+
+.navArrows {
+    position: relative;
+    top: 22px;
+    left: 12%;
+}
+
+.navArrows button {
+    position: relative;
+    top: 3px;
+    max-width: 70px;
+    background: transparent;
+    border: none !important;
+    font-size:0;
+}
+
+.navArrows button img {
+    position: relative;
+    left: -10px;
+}
+
+.rightArrowWrapper {
+    margin-left: 8px;
+}
+
+.leftArrowWrapper {
+    margin-left: 6px;
+}
+
+@media screen and (min-width: 900px){
+    .firstColumn button {
+        right: 23.5%;
+    }
+
+    .subColumn {
+        position: relative;
+        left: -10px;
+    }
+}
+
+@media screen and (min-width: 1000px){
+    .firstColumn button {
+        right: 24.5%;
+    }
+
+    .subColumn {
+        position: relative;
+        left: -10px;
+    }
+}
+
+@media screen and (min-width: 1100px){
+    .firstColumn button {
+        right: 25.5%;
+    }
+
+    .subColumn {
+        position: relative;
+        left: -10px;
+    }
+}
+
+@media screen and (min-width: 1200px){
+    .firstColumn button {
+        right: 26.5%;
+    }
+
+    .subColumn {
+        position: relative;
+        left: -5px;
+    }
+}
+
+@media screen and (min-width: 1300px){
+    .firstColumn button {
+        right: 27.3%;
+    }
+
+    .subColumn {
+        position: relative;
+        left: -5px;
+    }
+}
+
+@media screen and (min-width: 1400px){
+    .firstColumn button {
+        right: 27.8%;
+    }
+}
+
+@media screen and (min-width: 1500px){
+    .navigationSection img {
+        left: 12.7%;
+    }
+
+    .subColumn {
+        position: relative;
+        left: 1px;
+    }
+}
+
+@media screen and (min-width: 1600px){
+    .firstColumn button {
+        right: 28.5%;
+    }
+}
+
+@media screen and (min-width: 1700px){
+    .navigationSection img {
+        left: 12.6%;
+    }
+}
+
+@media screen and (min-width: 1800px){
+    .firstColumn button {
+        right: 29.2%;
+    }
+}
+
+.quote {
+    width: 90%;
+    font-size: 1.7rem;
+}
+
+.quote blockquote p {
+    text-align: left;
+    max-width: 92%;
+}
+
+.quoteAuthor {
+    text-align: right;
+}
+
+.firstColumn {
+    flex: 1;
+    display: inline-block;
+    max-width: 31%;
+    min-width: 31%;
+    vertical-align: top;
+    position: relative;
+    left: 11.1%;
+    z-index: 1;
+    background-color: white;
+}
+
+.text {
+    position: relative;
+    left: 30px;
+    min-width: 280px;
+    display: inline-block;
+}
+
+.firstColumn p {
+    max-width: 100%;
+    position: relative;
+    left: -38.5%;
+    padding-top: 3.5%;
+}
+
+.secondColumn {
+    display: inline-block;
+    flex: 1;
+    max-width: 69%;
+    min-width: 69%;
+    background-color: rgba(238,231,220,0.3);
+    position: relative;
+    left: 4.8%;
+    min-height: 105vh;
+    max-height: fit-content;
+}
+
+.secondColumn img {
+    max-width: 1080px;
+    transform: scale(1.015);
+}
+
+.container img {
+    max-height: 36vw;
+}
+
+.navigationSection p {
+    font-size: 53px;
+    position: relative;
+    left: 11.9%;
+    bottom: 8px;
+    display: inline-block;
+}
+
+@media screen and (min-width: 2000px) {
+    .navigationSection p {
+        top: -10px;
+    }
+}
+
+@media screen and (min-width: 2700px) {
+    .container img {
+        max-height: 25vw;
+    }
+
+    .navigationSection p {
+        top: -10px;
+        left: 12%;
+    }
+}
+
+@media screen and (min-width: 3000px) {
+    .container img {
+        max-height: 15vw;
+    }
+}
+
+.navArrows {
+    position: relative;
+    top: 9px;
+}
+
+.container {
+    width: 100%;
+    display: flex;
+    max-width: 1920px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.cardContainer {
+    transform: scale(1.1);
+    margin-top: 2.5%;
+    margin-bottom: 2.5%;
+}
+
+.card {
+    padding-left: 20px;
+}
+
+.secondNumber {
+    color: #AAAAAA;
+}
+
+.navigationSection img {
+    width: 59px;
+    min-width: 59px;
+    padding: 5px;
+    position: relative;
+    left: 13%;
+}
+
+.differentColorBlock {
+    background-color: rgba(238,231,220,0.3);
+    padding-top: 7%;
+}
+
+.differentColorBlock h3 {
+    padding-left: 2.5%;
+    padding-bottom: 1.5%;
+}
+
+.differentColorBlock h2 {
+    padding-left: 2.5%;
+}

@@ -1,0 +1,155 @@
+.container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #ffffff;
+    z-index: 2;
+    min-height: 600px;
+    animation: fadeIn 0.15s ease-in-out
+}
+
+.icon {
+    max-width: 11%;
+    margin-left: 12px;
+}
+
+.arrow {
+    max-width: 11%;
+    margin-left: 12px;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.linksList {
+    position: fixed;
+    top: 50%;
+    transform: translate(8px, -49%);
+    line-height: 1100%;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.linksList a {
+    color: #000000;
+    font-size: 960%;
+    display: block;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 400;
+}
+
+@media screen and (max-width: 1200px){
+    .linksList {
+        left: 1.1%;
+    }
+}
+
+@media screen and (max-width: 1050px){
+    .linksList {
+        left: 1.1%;
+    }
+}
+
+@media screen and (max-width: 900px){
+    .linksList {
+        left: 1.6%;
+    }
+}
+
+@media screen and (max-width: 800px){
+    .linksList {
+        left: 0.8%;
+    }
+}
+
+@media screen and (max-width: 700px){
+    .linksList {
+        left: 0.2%;
+    }
+}
+
+@media screen and (max-width: 450px){
+    .linksList a {
+        font-size: 460%;
+    }
+    .linksList {
+        line-height: 560%;
+        transform: translate(8px, -33%);
+    }
+}
+
+@media screen and (max-width: 400px){
+    .linksList {
+        left: -0.2%;
+    }
+    .linksList a {
+        font-size: 430%;
+    }
+    .linksList {
+        line-height: 530%;
+        transform: translate(8px, -31%);
+    }
+}
+
+@media screen and (max-width: 350px){
+    .linksList a {
+        font-size: 350%;
+    }
+    .linksList {
+        line-height: 470%;
+        transform: translate(8px, -26.5%);
+    }
+    .icon {
+        display: none;
+    }
+
+    .arrow {
+        display: none;
+    }
+}
+
+@media screen and (max-height: 1100px){
+    .linksList a {
+        font-size: 720%;
+    }
+    .linksList {
+        position: fixed;
+        top: 50%;
+        transform: translate(8px, -43%);
+        line-height: 750%;
+    }
+}
+
+@media screen and (max-height: 900px){
+    .linksList a {
+        font-size: 600%;
+    }
+    .linksList {
+        position: fixed;
+        top: 50%;
+        transform: translate(8px, -42%);
+        line-height: 700%;
+    }
+}
+
+@media screen and (max-height: 700px){
+    .linksList a {
+        font-size: 590%;
+    }
+    .linksList {
+        position: fixed;
+        top: 50%;
+        transform: translate(8px, -39%);
+        line-height: 760%;
+    }
+}

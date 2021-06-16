@@ -1,0 +1,95 @@
+iframe {
+    height: calc(100vw/1.77777778);
+    position: relative;
+    left: -5px;
+}
+
+.contentFirst {
+    max-width: 100vw;
+    min-width: 100vw;
+    position: relative;
+    left: 0;
+}
+
+.contentSecond {
+    max-width: 100%;
+    min-width: 100%;
+    padding-left: 2.3%;
+}
+
+.contentThird {
+    max-width: 100%;
+    min-width: 100%;
+}
+
+.container {
+    color: #3B3B3B;
+    background-color: rgba(238,231,220,0.3);
+}
+
+.quote {
+    max-width: 320px;
+    position: relative;
+    font-family: "Open Sans", sans-serif;
+    padding-left: 0.3%;
+    margin-top: 25px;
+}
+
+.quote blockquote p {
+    text-align: left;
+    max-width: 85%;
+}
+
+.quoteAuthor {
+    text-align: right;
+}
+
+.whoIsAuthor {
+    position: relative;
+    top: -10px;
+    padding-bottom: 10px;
+}
+
+.contentSecond h2 {
+    font-family: 'Lato', sans-serif;
+    font-size: 4.6rem;
+    padding-top: 60px;
+}
+
+.contentSecond h3 {
+    font-family: 'Lato', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    position: relative;
+    bottom: 10px;
+    letter-spacing: 0.5px;
+    padding-left: 2px;
+    padding-bottom: 20px;
+    padding-top: 5px;
+}
+
+.contentThird {
+    margin-left: 2.6%;
+}
+
+@media screen and (min-width: 560px){
+    .contentThird {
+        margin-left: 2.4%;
+    }
+}
+
+@media screen and (min-width: 790px){
+    .contentThird {
+        margin-left: 2.2%;
+    }
+}
+
+@media screen and (max-width: 340px){
+    .quote {
+        max-width: 300px;
+    }
+}
+
+.quote p {
+    font-size: 1.6rem;
+}

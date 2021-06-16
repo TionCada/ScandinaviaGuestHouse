@@ -1,0 +1,206 @@
+.container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1920px;
+    background-color: #ffffff;
+}
+
+.innerContainer {
+    min-height: 800px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.secondMainColumn {
+    width: 500px;
+    min-width: 450px;
+}
+
+.thirdMainColumn {
+    width: 500px;
+    min-width: 450px;
+}
+
+.firstColumn {
+    display: inline-block;
+    max-width: 10%;
+    min-width: 10%;
+    position: relative;
+}
+
+.secondColumn {
+    max-width: 90%;
+    min-width: 90%;
+    display: inline-block;
+}
+
+.firstColumn h2{
+    display: inline-block;
+    position: absolute;
+    bottom: 0;
+    transform: rotate(-90deg);
+    transform-origin: 0 0;
+    left: 200%;
+    font-size: 3.5rem;
+    font-weight: 600;
+}
+
+.firstColumn h3{
+    display: inline-block;
+    position: absolute;
+    bottom: 20px;
+    transform: rotate(-90deg);
+    transform-origin: 0 0;
+    left: 160%;
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.thirdBlock h3 {
+    position: absolute;
+    bottom: 3.4%;
+}
+
+.fourthBlock h3 {
+    position: absolute;
+    bottom: 3.3%;
+}
+
+.secondColumn img {
+    max-width: 70%;
+    position: relative;
+    left: 22%;
+    z-index: 0;
+}
+
+.firstBlock {
+    display: flex;
+    margin-top: 20%;
+    margin-bottom: 7%;
+}
+
+.firstBlock h2 {
+    color: #FF7B54;
+    font-family: Helvetica, sans-serif;
+    font-weight: normal;
+}
+
+.firstBlock h3 {
+    color: #FF7B54;
+    font-family: Helvetica, sans-serif;
+    font-weight: normal;
+}
+
+.secondBlock {
+    display: flex;
+    margin-top: 20%;
+    margin-bottom: 7%;
+}
+
+.secondBlock h2 {
+    color: #FFD743;
+    font-family: Helvetica, sans-serif;
+    font-weight: normal;
+}
+
+.secondBlock h3 {
+    color: #FFD743;
+    font-family: Helvetica, sans-serif;
+    font-weight: normal;
+}
+
+.thirdBlock {
+    display: flex;
+    margin-bottom: 20%;
+}
+
+.thirdBlock h2 {
+    color: #A1CAE2;
+    font-family: Helvetica, sans-serif;
+    font-weight: normal;
+}
+
+.thirdBlock h3 {
+    color: #A1CAE2;
+    font-family: Helvetica, sans-serif;
+    font-weight: normal;
+}
+
+.fourthBlock {
+    display: flex;
+    margin-bottom: 20%;
+}
+
+.fourthBlock h2 {
+    color: #86B86B;
+    font-family: Helvetica, sans-serif;
+    font-weight: normal;
+}
+
+.fourthBlock h3 {
+    color: #86B86B;
+    font-family: Helvetica, sans-serif;
+    font-weight: normal;
+}
+
+.linkWrapper {
+    height: 5px;
+    position: absolute;
+    bottom: 0;
+}
+
+.camouflageForDiv {
+    display: block;
+    position: absolute;
+    top: 300px;
+    left: -20px;
+    width: 100px;
+    height: 280px;
+    z-index: 1;
+}
+
+.secondBlock .firstColumn img {
+    display: block;
+    max-width: 140%;
+    z-index: 1;
+    position: relative;
+    left: 650%;
+    margin-top: -160%;
+    margin-left: 70%;
+}
+
+.firstBlock .firstColumn img {
+    visibility: visible;
+    display: block;
+    max-width: 140%;
+    z-index: 1;
+    position: relative;
+    left: 650%;
+    margin-top: -160%;
+    margin-left: 70%;
+}
+
+.thirdBlock .firstColumn img {
+    visibility: visible;
+    display: block;
+    max-width: 140%;
+    z-index: 1;
+    position: relative;
+    left: 650%;
+    margin-top: -160%;
+    margin-left: 70%;
+}
+
+.fourthBlock .firstColumn img {
+    visibility: visible;
+    display: block;
+    max-width: 140%;
+    z-index: 1;
+    position: relative;
+    left: 650%;
+    margin-top: -160%;
+    margin-left: 70%;
+}
+
+

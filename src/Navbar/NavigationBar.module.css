@@ -1,0 +1,259 @@
+.navbarContainer {
+    margin-top: 5px;
+    width: 100%;
+}
+
+.container {
+    max-width: 1920px;
+    margin-left: auto;
+    margin-right: auto;
+    overflow-x: hidden;
+}
+
+.navbarBrand {
+    z-index: 100;
+    position: relative;
+    left: 1%;
+}
+
+.navbarBrand img {
+    max-width: 155px;
+}
+
+.link {
+    color: #000000;
+    padding-left: 8.5%;
+    padding-right: 8.5%;
+    font-size: 18px;
+}
+
+.link:hover {
+    text-decoration: none;
+}
+
+.linksList a {
+    color: #000000;
+}
+
+.phoneButton {
+    max-width: 40px;
+    min-width: 40px;
+    max-height: 40px;
+    min-height: 40px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    visibility: hidden;
+}
+
+.menuButton {
+    max-width: 40px;
+    min-width: 40px;
+    max-height: 40px;
+    min-height: 40px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    background: transparent;
+    border: none !important;
+    font-size:0;
+    z-index: 100;
+    margin-right: 5px;
+}
+
+@media screen and (min-width: 300px){
+    .navbarBrand {
+        left: -2px;
+    }
+    .menuButton {
+        margin-right: -3px;
+    }
+}
+
+@media screen and (min-width: 340px){
+    .navbarBrand {
+        left: 0;
+    }
+    .menuButton {
+        margin-right: -1px;
+    }
+}
+
+@media screen and (min-width: 440px){
+    .navbarBrand {
+        left: 0.9%;
+    }
+    .navbarBrand img {
+        margin-left: -2px;
+    }
+    .menuButton {
+        margin-right: 4px;
+    }
+}
+
+@media screen and (min-width: 680px){
+    .navbarBrand {
+        left: 1.1%;
+    }
+    .menuButton {
+        margin-right: 5px;
+    }
+}
+
+@media screen and (min-width: 790px){
+    .navbarBrand {
+        left: 1.8%;
+    }
+    .menuButton {
+        margin-right: 15px;
+    }
+}
+
+@media screen and (min-width: 900px){
+
+    .menuButton {
+        margin-right: 5px;
+    }
+}
+
+@media screen and (min-width: 1000px){
+    .navbarBrand {
+        left: 1.3%;
+    }
+    .menuButton {
+        margin-right: 12px;
+    }
+}
+
+@media screen and (min-width: 1130px){
+
+    .menuButton {
+        margin-right: 12px;
+    }
+}
+
+@media screen and (min-width: 1200px){
+    .navbarBrand {
+        left: 1.5%;
+    }
+    .phoneButton {
+        margin-right: 8px;
+    }
+    .linksList {
+        padding-right: 564px;
+    }
+}
+
+@media screen and (min-width: 1300px){
+    .linksList {
+        padding-right: 578px;
+    }
+    .phoneButton {
+        margin-right: 12px;
+    }
+}
+
+@media screen and (min-width: 1400px){
+    .navbarBrand {
+        left: 1.6%;
+    }
+    .phoneButton {
+        margin-right: 16px;
+    }
+    .linksList {
+        padding-right: 588px;
+    }
+}
+
+@media screen and (min-width: 1600px){
+    .navbarBrand {
+        left: 1.7%;
+    }
+    .phoneButton {
+        margin-right: 18px;
+    }
+    .linksList {
+        padding-right: 590px;
+    }
+}
+
+@media screen and (min-width: 1900px){
+    .navbarBrand {
+        left: 1.7%;
+    }
+    .phoneButton {
+        margin-right: 27px;
+    }
+    .linksList {
+        padding-right: 630px;
+    }
+}
+
+.menuButtonTab:focus-visible {
+    outline: 1px dotted black;
+    outline-offset: -10px;
+}
+
+.linksList {
+    padding-right: 520px;
+}
+
+.phoneButton img {
+    visibility: visible;
+    max-width: 32px;
+    min-width: 32px;
+    max-height: 32px;
+    min-height: 32px;
+    margin-right: 15px;
+    z-index: 100;
+}
+
+@media screen and (max-width: 500px){
+
+    .navbarBrand img {
+        max-width: 130px;
+    }
+}
+
+.popupImage {
+    min-height: 130px;
+}
+
+.popupImage h3 {
+    font-size: 27px;
+    margin-top: 13%;
+    text-align: center;
+    min-width: 330px;
+    font-weight: 600;
+}
+
+.popupImage p {
+    font-size: 27px;
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.phoneSection {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.popupImage img {
+    max-width: 42px;
+    display: inline-block;
+}
+
+.modalMenu {
+    max-width: 1000px;
+    min-width: fit-content;
+}
+
+.menu {
+    display: block;
+    position: fixed;
+    width: 100vw;
+    background-color: #A1CAE2;
+    top: 0;
+    left: 0;
+    overflow-y: hidden;
+}
