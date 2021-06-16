@@ -4,7 +4,7 @@
 
 ## About the project
 
-This is a commercial freelance project for "Scandinavia" guest gouse. It is a green tourism-oriented small business located in Ukraine. You can read more about them at https://www.facebook.com/guest.house.scandinavia or you can visit "".
+This is a commercial freelance project for "Scandinavia" guest gouse. It is a green tourism-oriented small business located in Rivne, Ukraine. You can read more about them at https://www.facebook.com/guest.house.scandinavia or you can visit https://guest-house-scandinavia.web.app/.
 
 ## Project and technologies
 
