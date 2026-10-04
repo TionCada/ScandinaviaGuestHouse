@@ -1,6 +1,8 @@
 .navbarContainer {
     margin-top: 5px;
     width: 100%;
+    /* Bootstrap 5 dropped the navbar's horizontal padding; keep Bootstrap 4's */
+    --bs-navbar-padding-x: 1rem;
 }
 
 .container {

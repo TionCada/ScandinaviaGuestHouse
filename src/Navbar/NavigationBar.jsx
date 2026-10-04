@@ -39,8 +39,7 @@ const NavigationBar = (props) => {
 
     return (
         <div className={s.container}>
-            {/* expand and variant were react-bootstrap 1.x defaultProps, which React 19 no longer applies */}
-            <Navbar className={s.navbarContainer} bg="transparent" expand variant="light">
+            <Navbar className={s.navbarContainer} bg="transparent">
                 <Navbar.Brand href="/" className={s.navbarBrand}>
                     <img alt={"Scandinavia logo"} src={props.logo}/>
                 </Navbar.Brand>
@@ -57,7 +56,7 @@ const NavigationBar = (props) => {
                         }
                     </div>
                 </Nav>}
-                <Nav className="ml-auto">
+                <Nav className="ms-auto">
                     <Modal classNames={{modal: s.customModal}}
                            showCloseIcon={true} open={openModal}
                            onClose={onCloseModal} center>
