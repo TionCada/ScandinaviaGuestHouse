@@ -7,6 +7,7 @@
     "@fortawesome/free-brands-svg-icons": "^5.15.3",
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
     "@fortawesome/react-fontawesome": "^0.2.6",
+    "@reduxjs/toolkit": "^2.13.0",
     "animated-scroll-to": "^2.2.0",
     "aos": "^2.3.4",
     "bootstrap": "^4.6.0",
@@ -19,7 +20,6 @@
     "react-responsive-modal": "^8.0.0",
     "react-router-dom": "^7.18.4",
     "react-slick": "^0.31.0",
-    "redux": "^5.0.1",
     "slick-carousel": "^1.8.1",
     "web-vitals": "^1.1.0",
     "yet-another-react-lightbox": "^3.32.2"
