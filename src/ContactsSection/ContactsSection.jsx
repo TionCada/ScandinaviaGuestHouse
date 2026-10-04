@@ -1,5 +1,5 @@
 import React from 'react';
-import {useMediaQuery} from "react-responsive/src";
+import {useMediaQuery} from "react-responsive";
 import s2 from "./ContactsSectionMobile.module.css"
 import s1 from "./ContactsSection.module.css";
 import { faCamera, faPhoneAlt, faEnvelope, faMapMarkerAlt, faCode } from "@fortawesome/free-solid-svg-icons";

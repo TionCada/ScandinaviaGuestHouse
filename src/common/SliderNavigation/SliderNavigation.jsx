@@ -1,11 +1,14 @@
 import React, {useRef, useState} from 'react';
-import Slider from "react-slick";
+import SlickModule from "react-slick";
 import left_arrow from "../../assets/images/other/left_arrow.png";
 import right_arrow from "../../assets/images/other/right_arrow.png";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import 'react-responsive-modal/styles.css';
 import {SRLWrapper} from "simple-react-lightbox";
+
+// react-slick is CommonJS; under Vite the default import can arrive as {default: Slider}
+const Slider = SlickModule.default ?? SlickModule;
 
 const SliderNavigation = (props) => {
 

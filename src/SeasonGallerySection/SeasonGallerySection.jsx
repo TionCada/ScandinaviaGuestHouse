@@ -1,5 +1,5 @@
 import SliderNavigationContainer from "../common/SliderNavigation/SliderNavigationContainer";
-import {useMediaQuery} from "react-responsive/src";
+import {useMediaQuery} from "react-responsive";
 import s2 from "./SeasonGallerySectionMobile.module.css";
 import s1 from "./SeasonGallerySection.module.css";
 import {useHistory} from 'react-router-dom';

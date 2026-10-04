@@ -4,7 +4,7 @@ import s from "./App.module.css"
 import {BrowserRouter, Route} from "react-router-dom";
 import MainPage from "./MainPage/MainPage";
 import SeasonGallerySectionContainer from "./SeasonGallerySection/SeasonGallerySectionContainer";
-import {useMediaQuery} from "react-responsive/src";
+import {useMediaQuery} from "react-responsive";
 
 const App = (props) => {
 

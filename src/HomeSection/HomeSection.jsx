@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import NavbarContainer from "../Navbar/NavigationBarContainer";
-import {useMediaQuery} from "react-responsive/src";
+import {useMediaQuery} from "react-responsive";
 import s2 from "./HomeSectionMobile.module.css";
 import s1 from "./HomeSection.module.css";
 import AOS from 'aos';

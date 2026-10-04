@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import {NavLink} from "react-router-dom";
 import s1 from "./ExteriorSection.module.css";
 import s2 from "./ExteriorSectionMobile.module.css";
-import {useMediaQuery} from "react-responsive/src";
+import {useMediaQuery} from "react-responsive";
 import AOS from "aos";
 import 'aos/dist/aos.css';
 

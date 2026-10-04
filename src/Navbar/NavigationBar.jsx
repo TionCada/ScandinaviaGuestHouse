@@ -4,7 +4,7 @@ import {Modal} from "react-responsive-modal";
 import {HashLink as Link} from 'react-router-hash-link';
 import {Nav, Navbar} from "react-bootstrap";
 import {SliderReverse} from "react-burgers";
-import {useMediaQuery} from "react-responsive/src";
+import {useMediaQuery} from "react-responsive";
 import MenuContainer from "../Menu/MenuContainer";
 
 const NavigationBar = (props) => {

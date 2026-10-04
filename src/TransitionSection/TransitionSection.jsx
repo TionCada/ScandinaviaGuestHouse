@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import s1 from "./TransitionSection.module.css";
 import s2 from "./TransitionSectionMobile.module.css";
-import {useMediaQuery} from "react-responsive/src";
+import {useMediaQuery} from "react-responsive";
 import AOS from "aos";
 import 'aos/dist/aos.css';
 

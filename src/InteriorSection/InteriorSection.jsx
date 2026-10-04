@@ -1,5 +1,5 @@
 import SliderNavigationContainer from "../common/SliderNavigation/SliderNavigationContainer";
-import {useMediaQuery} from "react-responsive/src";
+import {useMediaQuery} from "react-responsive";
 import s2 from "./InteriorSectionMobile.module.css";
 import s1 from "./InteriorSection.module.css";
 import {useEffect} from "react";
