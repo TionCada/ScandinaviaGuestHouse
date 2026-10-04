@@ -3,7 +3,6 @@ import s from "./NavigationBar.module.css";
 import {Modal} from "react-responsive-modal";
 import {HashLink as Link} from 'react-router-hash-link';
 import {Nav, Navbar} from "react-bootstrap";
-import {SliderReverse} from "react-burgers";
 import {useMediaQuery} from "react-responsive";
 import MenuContainer from "../Menu/MenuContainer";
 
@@ -40,7 +39,8 @@ const NavigationBar = (props) => {
 
     return (
         <div className={s.container}>
-            <Navbar className={s.navbarContainer} bg="transparent">
+            {/* expand and variant were react-bootstrap 1.x defaultProps, which React 19 no longer applies */}
+            <Navbar className={s.navbarContainer} bg="transparent" expand variant="light">
                 <Navbar.Brand href="/" className={s.navbarBrand}>
                     <img alt={"Scandinavia logo"} src={props.logo}/>
                 </Navbar.Brand>
@@ -73,12 +73,12 @@ const NavigationBar = (props) => {
                         <img alt={"See phone number"} tabIndex={0} src={props.black_phone}/>
                     </button>
                     {isSmallScreen && <div className={s.menuButton}>
-                        <SliderReverse className={s.menuButtonTab} lineSpacing={isSmallScreen ? 8 : 10}
-                                       lineHeight={isSmallScreen ? 2 : 3}
-                                       width={isSmallScreen ? 31 : 40}
-                                       color={'#000000'}
-                                       onClick={() => {props.isMenuOpened ? props.setMenuClosed() : props.setMenuOpened()}}
-                                       active={props.isMenuOpened}/>
+                        <button className={[s.burger, s.menuButtonTab, props.isMenuOpened && s.burgerActive].filter(Boolean).join(' ')}
+                                onClick={() => {props.isMenuOpened ? props.setMenuClosed() : props.setMenuOpened()}}>
+                            <div className={s.burgerBox}>
+                                <div className={s.burgerInner}/>
+                            </div>
+                        </button>
                     </div>}
                     { (props.isMenuOpened && isSmallScreen) && <MenuContainer/> }
                 </Nav>

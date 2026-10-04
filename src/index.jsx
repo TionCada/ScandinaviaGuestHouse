@@ -1,21 +1,17 @@
 import 'normalize.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
-import ReactDOM from 'react-dom';
+import {createRoot} from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import store from "./redux/store";
 import {Provider} from "react-redux";
 import AppContainer from "./AppContainer";
-import SimpleReactLightbox from 'simple-react-lightbox'
 
-ReactDOM.render(
+createRoot(document.getElementById('root')).render(
     <Provider store={store}>
-        <SimpleReactLightbox>
-            <AppContainer/>
-        </SimpleReactLightbox>
-    </Provider>,
-    document.getElementById('root')
+        <AppContainer/>
+    </Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function
