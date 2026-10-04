@@ -1,16 +1,21 @@
 import React, {useRef, useState} from 'react';
-import Slider from "react-slick";
+import SlickModule from "react-slick";
 import left_arrow from "../../assets/images/other/left_arrow.png";
 import right_arrow from "../../assets/images/other/right_arrow.png";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import 'react-responsive-modal/styles.css';
-import {SRLWrapper} from "simple-react-lightbox";
+import Lightbox from "yet-another-react-lightbox";
+import "yet-another-react-lightbox/styles.css";
+
+// react-slick is CommonJS; under Vite the default import can arrive as {default: Slider}
+const Slider = SlickModule.default ?? SlickModule;
 
 const SliderNavigation = (props) => {
 
     const customSlider = useRef();
     const [slide, setSlide] = useState(0);
+    const [lightboxIndex, setLightboxIndex] = useState(-1);
 
     const settings = {
         dots: false,
@@ -25,47 +30,23 @@ const SliderNavigation = (props) => {
         beforeChange: (currentIndex, nextIndex) => setSlide(nextIndex)
     };
 
-    const options = {
-        settings: {
-            disablePanzoom: true,
-            slideAnimationType: "both",
-            slideTransitionSpeed: 0.1
-        },
-        buttons: {
-            showAutoplayButton: false,
-            showDownloadButton: false,
-            showFullscreenButton: false,
-            showThumbnailsButton: false,
-            iconColor: 'rgba(255, 255, 255, 1)',
-            backgroundColor: 'rgba(30,30,36,0)',
-            size: '50px'
-        },
-        caption: {
-            showCaption: false
-        },
-        thumbnails: {
-            showThumbnails: false,
-        },
-        progressBar: {
-            showProgressBar: false
-        },
-    };
-
     return (
         <div>
             <div className={props.s1.imageBlock}>
-                <SRLWrapper options={options}>
-                    <div className={props.s1.cardContainer}>
-                            <Slider {...settings} ref={slider => (customSlider.current = slider)}>
-                                {props.images.map((image, index) => (
-                                        <div key={index} className={props.s1.card}>
-                                            <img alt={"Interior of the house"} src={image}/>
-                                        </div>
-                                    )
-                                )}
-                            </Slider>
-                    </div>
-                </SRLWrapper>
+                <div className={props.s1.cardContainer}>
+                        <Slider {...settings} ref={slider => (customSlider.current = slider)}>
+                            {props.images.map((image, index) => (
+                                    <div key={index} className={props.s1.card}>
+                                        <img alt={"Interior of the house"} src={image}
+                                             onClick={() => setLightboxIndex(index)}/>
+                                    </div>
+                                )
+                            )}
+                        </Slider>
+                </div>
+                <Lightbox open={lightboxIndex >= 0} index={lightboxIndex} close={() => setLightboxIndex(-1)}
+                          slides={props.images.map(image => ({src: image}))}
+                          styles={{container: {backgroundColor: 'rgba(30, 30, 30, 0.9)'}}}/>
             </div>
             <div className={props.s1.navigationSection}>
                 <div className={props.s1.navArrows}>

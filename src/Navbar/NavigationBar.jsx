@@ -1,10 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import s from "./NavigationBar.module.css";
 import {Modal} from "react-responsive-modal";
-import {HashLink as Link} from 'react-router-hash-link';
+import Link from "../common/HashLink/HashLink";
 import {Nav, Navbar} from "react-bootstrap";
-import {SliderReverse} from "react-burgers";
-import {useMediaQuery} from "react-responsive/src";
+import {useMediaQuery} from "react-responsive";
 import MenuContainer from "../Menu/MenuContainer";
 
 const NavigationBar = (props) => {
@@ -57,7 +56,7 @@ const NavigationBar = (props) => {
                         }
                     </div>
                 </Nav>}
-                <Nav className="ml-auto">
+                <Nav className="ms-auto">
                     <Modal classNames={{modal: s.customModal}}
                            showCloseIcon={true} open={openModal}
                            onClose={onCloseModal} center>
@@ -73,12 +72,12 @@ const NavigationBar = (props) => {
                         <img alt={"See phone number"} tabIndex={0} src={props.black_phone}/>
                     </button>
                     {isSmallScreen && <div className={s.menuButton}>
-                        <SliderReverse className={s.menuButtonTab} lineSpacing={isSmallScreen ? 8 : 10}
-                                       lineHeight={isSmallScreen ? 2 : 3}
-                                       width={isSmallScreen ? 31 : 40}
-                                       color={'#000000'}
-                                       onClick={() => {props.isMenuOpened ? props.setMenuClosed() : props.setMenuOpened()}}
-                                       active={props.isMenuOpened}/>
+                        <button className={[s.burger, s.menuButtonTab, props.isMenuOpened && s.burgerActive].filter(Boolean).join(' ')}
+                                onClick={() => {props.isMenuOpened ? props.setMenuClosed() : props.setMenuOpened()}}>
+                            <div className={s.burgerBox}>
+                                <div className={s.burgerInner}/>
+                            </div>
+                        </button>
                     </div>}
                     { (props.isMenuOpened && isSmallScreen) && <MenuContainer/> }
                 </Nav>
