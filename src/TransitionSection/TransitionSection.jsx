@@ -2,8 +2,7 @@ import React, {useEffect, useState} from 'react';
 import s1 from "./TransitionSection.module.css";
 import s2 from "./TransitionSectionMobile.module.css";
 import {useMediaQuery} from "react-responsive";
-import AOS from "aos";
-import 'aos/dist/aos.css';
+import ScrollFade from "../common/ScrollFade/scrollFade";
 
 const TransitionSection = (props) => {
 
@@ -26,7 +25,7 @@ const TransitionSection = (props) => {
     }
 
     useEffect(() => {
-        AOS.init({duration: 2000});
+        ScrollFade.init({duration: 2000});
         updateMarginTop();
         window.addEventListener("resize", updateMarginTop);
         return () => {window.removeEventListener("resize", updateMarginTop)}

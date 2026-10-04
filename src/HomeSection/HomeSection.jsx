@@ -3,8 +3,7 @@ import NavbarContainer from "../Navbar/NavigationBarContainer";
 import {useMediaQuery} from "react-responsive";
 import s2 from "./HomeSectionMobile.module.css";
 import s1 from "./HomeSection.module.css";
-import AOS from 'aos';
-import 'aos/dist/aos.css';
+import ScrollFade from "../common/ScrollFade/scrollFade";
 
 const HomeSection = (props) => {
 
@@ -14,7 +13,7 @@ const HomeSection = (props) => {
     isMobile ? s = s2 : s = s1;
 
     useEffect(() => {
-        AOS.init({duration: 2500});
+        ScrollFade.init({duration: 2500});
     }, []);
 
     return (
