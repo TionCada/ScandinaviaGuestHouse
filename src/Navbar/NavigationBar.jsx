@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import s from "./NavigationBar.module.css";
 import {Modal} from "react-responsive-modal";
-import {HashLink as Link} from 'react-router-hash-link';
+import Link from "../common/HashLink/HashLink";
 import {Nav, Navbar} from "react-bootstrap";
 import {useMediaQuery} from "react-responsive";
 import MenuContainer from "../Menu/MenuContainer";

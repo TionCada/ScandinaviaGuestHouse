@@ -1,6 +1,6 @@
 import React from 'react';
 import s from "./Menu.module.css"
-import {HashLink as Link} from "react-router-hash-link";
+import Link from "../common/HashLink/HashLink";
 import animateScrollTo from 'animated-scroll-to';
 import { faGlobeAmericas } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

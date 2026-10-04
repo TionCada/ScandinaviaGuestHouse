@@ -2,12 +2,12 @@ import SliderNavigationContainer from "../common/SliderNavigation/SliderNavigati
 import {useMediaQuery} from "react-responsive";
 import s2 from "./SeasonGallerySectionMobile.module.css";
 import s1 from "./SeasonGallerySection.module.css";
-import {useHistory} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import {useEffect} from "react";
 
 const SeasonGallerySection = (props) => {
 
-    const history = useHistory();
+    const navigate = useNavigate();
     const isSmallScreen = useMediaQuery({query: '(max-width: 900px)'})
 
     let s;
@@ -25,7 +25,7 @@ const SeasonGallerySection = (props) => {
             <div className={s.container}>
                 <div className={s.firstColumn}>
                     <div className={s.subColumn}>
-                        <button onClick={() => history.goBack()}>
+                        <button onClick={() => navigate(-1)}>
                             <img alt={"Go to the main page"} src={props.left_arrow}/>
                         </button>
                         <div className={s.text}>
