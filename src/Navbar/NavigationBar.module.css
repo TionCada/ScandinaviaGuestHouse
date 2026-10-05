@@ -1,329 +1,112 @@
-.navbarContainer {
-    margin-top: 5px;
-    width: 100%;
-    /* Bootstrap 5 dropped the navbar's horizontal padding; keep Bootstrap 4's */
-    --bs-navbar-padding-x: 1rem;
-}
-
-.container {
-    max-width: 1920px;
-    margin-left: auto;
-    margin-right: auto;
-    overflow-x: hidden;
-}
-
-.navbarBrand {
-    z-index: 100;
-    position: relative;
-    left: 1%;
-}
-
-.navbarBrand img {
-    max-width: 155px;
-}
-
-.link {
-    color: #000000;
-    padding-left: 8.5%;
-    padding-right: 8.5%;
-    font-size: 18px;
-}
-
-.link:hover {
-    text-decoration: none;
-}
-
-.linksList a {
-    color: #000000;
-}
-
-.phoneButton {
-    max-width: 40px;
-    min-width: 40px;
-    max-height: 40px;
-    min-height: 40px;
+.header {
+    display: grid;
+    /* Equal side columns (that never grow past their share) keep the logo exactly centred */
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
     align-items: center;
+    /* 56px logo with 20px above and below; the hero video starts right under it */
+    height: 96px;
+    /* Same side margins as the hero video, so the outer items line up with its edges */
+    padding: 0 5vw;
+    background-color: #ffffff;
+    color: #1f1f1f;
+    font-family: "Open Sans", sans-serif;
+    font-size: 1.7rem;
+}
+
+.left {
+    justify-self: start;
+    position: relative;
+    z-index: 3;
+}
+
+.right {
+    justify-self: end;
     display: flex;
-    justify-content: center;
+    align-items: center;
+    gap: clamp(16px, 2vw, 32px);
+}
+
+.logo {
+    position: relative;
+    z-index: 3;
+    display: block;
+}
+
+.logo img {
+    display: block;
+    height: 56px;
+    width: auto;
+}
+
+.navItem {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 0;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+}
+
+.navItem:hover {
+    color: #000000;
+}
+
+.navItem:focus-visible {
+    outline: 1px dotted #000000;
+    outline-offset: 4px;
+}
+
+/* All variants share one grid cell, so the box takes the widest one's size */
+.stableLabel {
+    display: inline-grid;
+    /* Buttons centre text by default; keep labels starting right after their icon */
+    text-align: left;
+}
+
+.stableLabel > span {
+    grid-area: 1 / 1;
+}
+
+.stableGhost {
     visibility: hidden;
 }
 
-.menuButton {
-    max-width: 40px;
-    min-width: 40px;
-    max-height: 40px;
-    min-height: 40px;
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    background: transparent;
-    border: none !important;
-    font-size:0;
-    z-index: 100;
-    margin-right: 5px;
+/* Underline the label on hover (the hidden variants stay invisible) */
+.navItem:hover .stableLabel > span {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
 }
 
-@media screen and (min-width: 300px){
-    .navbarBrand {
-        left: -2px;
-    }
-    .menuButton {
-        margin-right: -3px;
-    }
+.icon {
+    width: 20px;
+    height: 20px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    flex-shrink: 0;
 }
 
-@media screen and (min-width: 340px){
-    .navbarBrand {
-        left: 0;
+@media screen and (max-width: 600px) {
+    .header {
+        height: 68px;
+        padding: 0 16px;
+        font-size: 1.6rem;
     }
-    .menuButton {
-        margin-right: -1px;
+
+    .logo img {
+        height: 44px;
     }
 }
 
-@media screen and (min-width: 440px){
-    .navbarBrand {
-        left: 0.9%;
+/* On narrow phones the label would run into the logo: the phone icon alone still calls */
+@media screen and (max-width: 420px) {
+    .bookLabel {
+        display: none;
     }
-    .navbarBrand img {
-        margin-left: -2px;
-    }
-    .menuButton {
-        margin-right: 4px;
-    }
-}
-
-@media screen and (min-width: 680px){
-    .navbarBrand {
-        left: 1.1%;
-    }
-    .menuButton {
-        margin-right: 5px;
-    }
-}
-
-@media screen and (min-width: 790px){
-    .navbarBrand {
-        left: 1.8%;
-    }
-    .menuButton {
-        margin-right: 15px;
-    }
-}
-
-@media screen and (min-width: 900px){
-
-    .menuButton {
-        margin-right: 5px;
-    }
-}
-
-@media screen and (min-width: 1000px){
-    .navbarBrand {
-        left: 1.3%;
-    }
-    .menuButton {
-        margin-right: 12px;
-    }
-}
-
-@media screen and (min-width: 1130px){
-
-    .menuButton {
-        margin-right: 12px;
-    }
-}
-
-@media screen and (min-width: 1200px){
-    .navbarBrand {
-        left: 1.5%;
-    }
-    .phoneButton {
-        margin-right: 8px;
-    }
-    .linksList {
-        padding-right: 564px;
-    }
-}
-
-@media screen and (min-width: 1300px){
-    .linksList {
-        padding-right: 578px;
-    }
-    .phoneButton {
-        margin-right: 12px;
-    }
-}
-
-@media screen and (min-width: 1400px){
-    .navbarBrand {
-        left: 1.6%;
-    }
-    .phoneButton {
-        margin-right: 16px;
-    }
-    .linksList {
-        padding-right: 588px;
-    }
-}
-
-@media screen and (min-width: 1600px){
-    .navbarBrand {
-        left: 1.7%;
-    }
-    .phoneButton {
-        margin-right: 18px;
-    }
-    .linksList {
-        padding-right: 590px;
-    }
-}
-
-@media screen and (min-width: 1900px){
-    .navbarBrand {
-        left: 1.7%;
-    }
-    .phoneButton {
-        margin-right: 27px;
-    }
-    .linksList {
-        padding-right: 630px;
-    }
-}
-
-/* Hamburger icon, reproducing react-burgers' SliderReverse at width 31, lineHeight 2, lineSpacing 8 */
-.burger {
-    padding: 15px;
-    display: inline-block;
-    cursor: pointer;
-    font: inherit;
-    color: inherit;
-    text-transform: none;
-    background-color: transparent;
-    border: 0;
-    margin: 0;
-    overflow: visible;
-    outline: 0;
-}
-
-.burgerBox {
-    width: 31px;
-    height: 22px;
-    display: inline-block;
-    position: relative;
-}
-
-.burgerInner,
-.burgerInner::before,
-.burgerInner::after {
-    position: absolute;
-    width: 100%;
-    background-color: #000000;
-    height: 2px;
-    border-radius: 0;
-    transition-property: transform;
-    transition-duration: 0.15s;
-    transition-timing-function: ease;
-}
-
-.burgerInner {
-    top: 1px;
-    margin-top: -1px;
-}
-
-.burgerInner::before,
-.burgerInner::after {
-    content: '';
-    display: block;
-}
-
-.burgerInner::before {
-    top: 10px;
-    transition-property: transform, opacity;
-}
-
-.burgerInner::after {
-    top: 20px;
-}
-
-.burgerActive .burgerInner {
-    transform: translate3d(0, 10px, 0) rotate(-45deg);
-}
-
-.burgerActive .burgerInner::before {
-    transform: rotate(45deg) translate3d(4.43px, -8px, 0);
-    opacity: 0;
-}
-
-.burgerActive .burgerInner::after {
-    transform: translate3d(0, -20px, 0) rotate(90deg);
-}
-
-.menuButtonTab:focus-visible {
-    outline: 1px dotted black;
-    outline-offset: -10px;
-}
-
-.linksList {
-    padding-right: 520px;
-}
-
-.phoneButton img {
-    visibility: visible;
-    max-width: 32px;
-    min-width: 32px;
-    max-height: 32px;
-    min-height: 32px;
-    margin-right: 15px;
-    z-index: 100;
-}
-
-@media screen and (max-width: 500px){
-
-    .navbarBrand img {
-        max-width: 130px;
-    }
-}
-
-.popupImage {
-    min-height: 130px;
-}
-
-.popupImage h3 {
-    font-size: 27px;
-    margin-top: 13%;
-    text-align: center;
-    min-width: 330px;
-    font-weight: 600;
-}
-
-.popupImage p {
-    font-size: 27px;
-    display: inline-block;
-    margin-left: 10px;
-}
-
-.phoneSection {
-    text-align: center;
-    margin-top: 15px;
-}
-
-.popupImage img {
-    max-width: 42px;
-    display: inline-block;
-}
-
-.modalMenu {
-    max-width: 1000px;
-    min-width: fit-content;
-}
-
-.menu {
-    display: block;
-    position: fixed;
-    width: 100vw;
-    background-color: #A1CAE2;
-    top: 0;
-    left: 0;
-    overflow-y: hidden;
 }

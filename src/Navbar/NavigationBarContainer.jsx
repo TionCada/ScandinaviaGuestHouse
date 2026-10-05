@@ -1,22 +1,26 @@
 import {connect} from "react-redux";
 import {switchToEnglish, switchToUkrainian} from "../redux/language-reducer";
 import Navbar from "./NavigationBar";
-import {setMenuClosed, setMenuOpened} from "../redux/menu-reducer";
+import ukrainianLanguage from "../redux/ukrainianLanguage";
+import englishLanguage from "../redux/englishLanguage";
+
+// Every wording each header label can show, across languages
+const menus = [ukrainianLanguage.navigationMenu, englishLanguage.navigationMenu];
+const labelVariants = {
+    language: menus.map(m => m.languageCode),
+    book: menus.map(m => m.bookLabel)
+};
 
 let mapStateToProps = (state) => {
     return {
-        isMenuOpened: state.menu.isOpened,
-        firstLink: state.languages.navigationMenu.firstLink,
-        secondLink: state.languages.navigationMenu.secondLink,
-        thirdLink: state.languages.navigationMenu.thirdLink,
-        fourthLink: state.languages.navigationMenu.fourthLink,
-        phoneCall: state.languages.navigationMenu.phoneCall,
+        labelVariants: labelVariants,
+        bookLabel: state.languages.navigationMenu.bookLabel,
         phoneNumber: state.languages.navigationMenu.phoneNumber,
+        fourthLink: state.languages.navigationMenu.fourthLink,
+        languageCode: state.languages.navigationMenu.languageCode,
         logo: state.content.navigationMenu.logo,
-        white_phone: state.content.navigationMenu.white_phone,
-        black_phone: state.content.navigationMenu.black_phone,
         isEnglishLanguageActive: state.languages.isEnglishLanguageActive,
     }
 }
 
-export default connect(mapStateToProps, {switchToEnglish, switchToUkrainian, setMenuOpened, setMenuClosed})(Navbar);
+export default connect(mapStateToProps, {switchToEnglish, switchToUkrainian})(Navbar);

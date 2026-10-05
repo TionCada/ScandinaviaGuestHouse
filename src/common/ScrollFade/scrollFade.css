@@ -1,13 +1,6 @@
-/* Matches the "fade" rules of the aos package this replaces */
-[data-aos^='fade'][data-aos^='fade'] {
+/* Hidden until scrollFade.js sets opacity and transform from the scroll position.
+   No CSS transition: the values follow the scroll directly, frame by frame. */
+[data-aos^='fade'] {
     opacity: 0;
-    transition-property: opacity, transform;
-    transition-duration: var(--aos-duration, 400ms);
-    transition-timing-function: ease;
-    transition-delay: 0s;
-}
-
-[data-aos^='fade'][data-aos^='fade'].aos-animate {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
+    will-change: opacity, transform;
 }

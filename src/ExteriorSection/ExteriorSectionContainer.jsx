@@ -15,7 +15,6 @@ let mapStateToProps = (state) => {
         autumnImage: state.content.exteriorSection.autumnImage,
         winterImage: state.content.exteriorSection.winterImage,
         springImage: state.content.exteriorSection.springImage,
-        right_arrow_white: state.content.other.right_arrow_white,
     }
 }
 

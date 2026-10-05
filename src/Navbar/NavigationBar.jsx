@@ -1,88 +1,54 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import s from "./NavigationBar.module.css";
-import {Modal} from "react-responsive-modal";
-import Link from "../common/HashLink/HashLink";
-import {Nav, Navbar} from "react-bootstrap";
-import {useMediaQuery} from "react-responsive";
-import MenuContainer from "../Menu/MenuContainer";
+
+const GlobeIcon = () => (
+    <svg className={s.icon} viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="12" cy="12" r="9"/>
+        <path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9M12 3c-2.5 2.6-3.8 5.6-3.8 9s1.3 6.4 3.8 9"/>
+    </svg>
+);
+
+const PhoneIcon = () => (
+    <svg className={s.icon} viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/>
+    </svg>
+);
+
+// Renders text in a box as wide as the widest of its variants, so switching language
+// doesn't shift the header. Unused variants are invisible.
+const StableLabel = ({text, variants}) => (
+    <span className={s.stableLabel}>
+        {variants.filter(v => v !== text).map(v => <span key={v} className={s.stableGhost} aria-hidden="true">{v}</span>)}
+        <span>{text}</span>
+    </span>
+);
 
 const NavigationBar = (props) => {
 
-    const isMobileDevice = useMediaQuery({query: '(max-width: 500px)'})
-    const isSmallScreen = useMediaQuery({ query: '(max-width: 1200px)' })
-
-    const [openModal, setOpenModal] = useState(false);
-    const onOpenModal = () => {setOpenModal(true)};
-    const onCloseModal = () => setOpenModal(false);
-
-    useEffect(() => {
-
-        const handleResize = () => {props.setMenuClosed()}
-        window.addEventListener('resize', handleResize)
-
-        if (props.isMenuOpened === true) {
-            if (isSmallScreen === false) {
-                props.setMenuClosed();
-            }
-            document.body.style.position = 'fixed';
-            document.body.style.overflowY = 'scroll';
-            document.body.style.width = '100%';
-        }
-
-        return () => {
-            document.body.style.position = 'static';
-            document.body.style.overflowY = 'auto';
-            document.body.style.width = 'auto';
-            window.removeEventListener('resize', handleResize)
-        }
-    });
+    const switchLanguage = () => {props.isEnglishLanguageActive ? props.switchToUkrainian() : props.switchToEnglish()};
 
     return (
-        <div className={s.container}>
-            <Navbar className={s.navbarContainer} bg="transparent">
-                <Navbar.Brand href="/" className={s.navbarBrand}>
-                    <img alt={"Scandinavia logo"} src={props.logo}/>
-                </Navbar.Brand>
-                { !isSmallScreen && <Nav className={"mx-auto"}>
-                    <div className={s.linksList}>
-                        <Link smooth className={s.link} to="/#InteriorSection">{props.firstLink}</Link>
-                        <Link smooth className={s.link} to="/#ExteriorSection">{props.secondLink}</Link>
-                        <Link smooth className={s.link} to="/#ContactsSection">{props.thirdLink}</Link>
-                        {props.isEnglishLanguageActive
-                            ? <Link to="#" className={s.link} onClick={() =>
-                            {props.switchToUkrainian()}}>{props.fourthLink}</Link>
-                            : <Link to="#" className={s.link} onClick={() =>
-                            {props.switchToEnglish()}}>{props.fourthLink}</Link>
-                        }
-                    </div>
-                </Nav>}
-                <Nav className="ms-auto">
-                    <Modal classNames={{modal: s.customModal}}
-                           showCloseIcon={true} open={openModal}
-                           onClose={onCloseModal} center>
-                        <div className={s.popupImage}>
-                            <h3>{props.phoneCall}</h3>
-                            <div className={s.phoneSection}>
-                                <img alt={""} src={props.black_phone}/>
-                                <p>{props.phoneNumber}</p>
-                            </div>
-                        </div>
-                    </Modal>
-                    <button className={s.phoneButton} onClick={() => { isMobileDevice ? window.open('tel:' + props.phoneNumber) : onOpenModal()}}>
-                        <img alt={"See phone number"} tabIndex={0} src={props.black_phone}/>
-                    </button>
-                    {isSmallScreen && <div className={s.menuButton}>
-                        <button className={[s.burger, s.menuButtonTab, props.isMenuOpened && s.burgerActive].filter(Boolean).join(' ')}
-                                onClick={() => {props.isMenuOpened ? props.setMenuClosed() : props.setMenuOpened()}}>
-                            <div className={s.burgerBox}>
-                                <div className={s.burgerInner}/>
-                            </div>
-                        </button>
-                    </div>}
-                    { (props.isMenuOpened && isSmallScreen) && <MenuContainer/> }
-                </Nav>
-            </Navbar>
-        </div>
+        <header className={s.header}>
+            <div className={s.left}>
+                {/* Booking is done by phone: the button calls the guest house */}
+                <a className={s.navItem} href={'tel:' + props.phoneNumber.replace(/\s/g, '')}
+                   aria-label={props.bookLabel + ', ' + props.phoneNumber}>
+                    <PhoneIcon/>
+                    <span className={s.bookLabel}>
+                        <StableLabel text={props.bookLabel} variants={props.labelVariants.book}/>
+                    </span>
+                </a>
+            </div>
+            <div className={s.logo}>
+                <img alt={"Scandinavia logo"} src={props.logo}/>
+            </div>
+            <div className={s.right}>
+                <button className={s.navItem} onClick={switchLanguage} aria-label={props.fourthLink}>
+                    <GlobeIcon/>
+                    <StableLabel text={props.languageCode} variants={props.labelVariants.language}/>
+                </button>
+            </div>
+        </header>
     )
 };
 

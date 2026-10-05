@@ -1,9 +1,8 @@
 import React from 'react';
 import s from "../App.module.css";
 import HomeSectionContainer from "../HomeSection/HomeSectionContainer";
-import TransitionSectionContainer from "../TransitionSection/TransitionSectionContainer";
+import HousesSectionContainer from "../HousesSection/HousesSectionContainer";
 import ExteriorSectionContainer from "../ExteriorSection/ExteriorSectionContainer";
-import InteriorSectionContainer from "../InteriorSection/InteriorSectionContainer";
 import ContactsSectionContainer from "../ContactsSection/ContactsSectionContainer";
 
 const MainPage = () => {
@@ -13,14 +12,11 @@ const MainPage = () => {
             <div className={s.homeSection}>
                 <HomeSectionContainer/>
             </div>
-            <div className={s.transitionSection}>
-                <TransitionSectionContainer/>
+            <div>
+                <HousesSectionContainer/>
             </div>
             <div className={s.exteriorSection}>
                 <ExteriorSectionContainer/>
-            </div>
-            <div className={s.exteriorSection}>
-                <InteriorSectionContainer/>
             </div>
             <div className={s.ContactsSection}>
                 <ContactsSectionContainer/>

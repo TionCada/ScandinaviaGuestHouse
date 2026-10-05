@@ -1,0 +1,130 @@
+/* The two houses as an asymmetric pair, on the site's off-white. */
+.container {
+    color: #3B3B3B;
+    background-color: #faf8f5;
+    padding: clamp(48px, 7vw, 110px) 5vw;
+}
+
+/* Asymmetric pair spanning the same width as the hero video (the section's 5vw side
+   padding): a large bungalow on the left, a smaller camping card on the right */
+.houses {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    align-items: start;
+    gap: clamp(32px, 5vw, 96px);
+}
+
+/* Zig-zag: the camping caption sits above its photo, filling the space beside the bungalow */
+.house:nth-child(2) {
+    display: flex;
+    flex-direction: column;
+    /* Deep stagger: the camping photo starts roughly level with the middle of the bungalow */
+    margin-top: clamp(64px, 10vw, 190px);
+}
+
+.house:nth-child(2) .photo {
+    order: 1;
+}
+
+.house:nth-child(2) h4 {
+    margin-top: 0;
+}
+
+.house:nth-child(2) .details {
+    margin: 6px 0 20px;
+}
+
+.house:nth-child(2) .photo {
+    aspect-ratio: 4 / 3;
+}
+
+.photo {
+    aspect-ratio: 3 / 2;
+    overflow: hidden;
+    /* Same rounding as the hero video */
+    border-radius: 8px;
+}
+
+.photo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* House names use the same type as the big season names; facilities lines the same
+   as the small Swedish season words */
+.house h4 {
+    margin: 4px 0 0;
+    font-family: Helvetica, sans-serif;
+    font-size: 2.8rem;
+    font-weight: normal;
+}
+
+/* Guests • rooms • area line under the house name */
+.details {
+    margin: 20px 0 0;
+    font-family: Helvetica, sans-serif;
+    font-size: 1.8rem;
+    font-weight: normal;
+}
+
+@media screen and (max-width: 740px) {
+    .container {
+        padding: 48px 16px;
+    }
+
+    .houses {
+        grid-template-columns: 1fr;
+    }
+
+    /* Diagonal on phones too: a wider bungalow anchored left, a smaller camping card
+       anchored right */
+    .house:nth-child(1) {
+        margin-right: 10%;
+    }
+
+    .house:nth-child(2) {
+        margin-top: 8px;
+        margin-left: 30%;
+    }
+
+    /* Captions follow the diagonal: left-aligned under the bungalow, right-aligned
+       under the camping card; the facilities line comes first on both */
+    .house:nth-child(1) {
+        text-align: left;
+    }
+
+    .house:nth-child(2) {
+        text-align: right;
+    }
+
+    .house:nth-child(2) .photo {
+        order: 0;
+    }
+
+    .house:nth-child(2) .details {
+        order: 1;
+        margin: 14px 0 0;
+        /* Right-aligned and kept on one line: when wider than the narrow photo it extends
+           left, into the empty space beside it (flex end alignment overflows leftwards;
+           plain text-align would overflow off the right edge of the screen) */
+        white-space: nowrap;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .house:nth-child(2) h4 {
+        order: 2;
+        margin: 4px 0 0;
+    }
+
+    .details {
+        margin-top: 14px;
+        font-size: 1.6rem;
+    }
+
+    .house h4 {
+        font-size: 2.4rem;
+    }
+}

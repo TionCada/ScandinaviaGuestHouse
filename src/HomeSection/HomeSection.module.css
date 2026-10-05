@@ -1,158 +1,117 @@
 .container {
-    max-width: 1920px;
-    max-height: 1080px;
-    margin-left: auto;
-    margin-right: auto;
     background-color: #ffffff;
+    /* Same as the houses section's top padding, so the space below the video matches */
+    padding-bottom: clamp(48px, 7vw, 110px);
 }
 
-.navbr {
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-}
-
-.firstColumn {
-    margin-top: 90px;
+/* Rounded media card under the header, filled by the background video */
+.hero {
     position: relative;
-    display: inline-block;
-    width: 60%;
-    min-height: calc(100vh - 90px);
-}
-
-@media screen and (min-height: 700px){
-    .contentFirst {
-        margin-left: -2px;
-        transform: scale(1.1);
-        transform-origin: left top;
-        margin-bottom: 40px;
-    }
-    .contentSecond {
-        margin-left: -2px;
-        transform: scale(1.1);
-        transform-origin: left top;
-    }
-}
-
-@media screen and (min-height: 800px){
-    .contentFirst {
-        padding-top: 10px;
-        margin-left: -6px;
-        transform: scale(1.2);
-        transform-origin: left top;
-        margin-bottom: 60px;
-    }
-    .contentSecond {
-        padding-top: 5px;
-        margin-left: -6px;
-        transform: scale(1.2);
-        transform-origin: left top;
-    }
-}
-
-@media screen and (min-height: 900px){
-    .contentFirst {
-        padding-top: 20px;
-        margin-left: -16px;
-        transform: scale(1.5);
-        transform-origin: left top;
-        margin-bottom: 115px;
-    }
-    .contentSecond {
-        padding-top: 10px;
-        margin-left: -16px;
-        transform: scale(1.5);
-        transform-origin: left top;
-    }
-}
-
-@media screen and (min-height: 1000px){
-    .contentFirst {
-        padding-top: 40px;
-    }
-    .contentSecond {
-        padding-top: 20px;
-    }
-}
-
-@media screen and (min-height: 1200px){
-    .firstColumn {
-        min-height: 990px;
-    }
-}
-
-.secondColumn {
-    display: inline-block;
-    width: 40%;
-    position: absolute;
-    top: 0;
-}
-
-.background_image img{
-    width: 100%;
-    height: 100vh;
+    /* 96px header (which includes the gap above the video) and a 20px gap below */
+    height: calc(100vh - 96px - 20px);
+    min-height: 480px;
     max-height: 1080px;
-    max-width: 768px;
+    margin: 0 5vw;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #2b2b2b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
 }
 
-.contentFirst {
-    margin-top: 6%;
-    max-width: 275px;
-    min-width: 275px;
-    margin-left: 3.7%;
+/* Darkens the video so the white text stays readable over bright footage */
+.overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.35));
 }
 
-.contentFirst h1 {
-    font-size: 41px;
-    font-weight: 600;
+.content {
+    position: relative;
+    width: 100%;
+    padding: 0 5%;
+    text-align: center;
+    color: #faf8f5;
 }
 
-.contentSecond {
-    margin-top: 20px;
-    max-width: 300px;
-    min-width: 300px;
-    margin-left: 3.9%;
-}
-
-.contentSecond p {
-    font-size: 20px;
+.content h1 {
+    margin: 0;
     font-family: "Open Sans", sans-serif;
+    font-weight: 400;
+    font-size: clamp(3rem, 4.6vw, 8.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
 }
 
-@media screen and (max-width: 500px) {
-    .contentSecond p {
-        display: none;
-    }
-
-    .contentFirst h1 {
-        padding-top: 30px;
-    }
-}
-
-@media screen and (max-height: 500px) {
-    .contentSecond p {
-        display: none;
-    }
-
-    .contentFirst h1 {
-        padding-top: 30px;
-    }
+.content p {
+    max-width: 560px;
+    margin: clamp(16px, 2.4vw, 32px) auto 0;
+    font-family: "Open Sans", sans-serif;
+    font-size: clamp(1.6rem, 1.5vw, 2.2rem);
+    line-height: 1.5;
 }
 
 .down_arrow {
-    margin-left: 3.9%;
     position: absolute;
-    bottom: 5%;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.down_arrow img {
+    display: block;
+    width: 24px;
+    /* The arrow asset is black; show it white on the video */
+    filter: invert(1);
+    animation: arrowBounce 2.4s ease-in-out infinite;
+}
+
+/* Slow, small downward nudge hinting that the page continues below */
+@keyframes arrowBounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(8px);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .down_arrow img {
+        animation: none;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .hero {
+        height: calc(100vh - 68px - 12px);
+        margin: 0 16px;
+    }
+
+    .container {
+        padding-bottom: 48px;
+    }
+}
+
+/* Only very short screens (phones held sideways) drop the paragraph */
+@media screen and (max-height: 500px) {
+    .content p {
+        display: none;
+    }
 }
 
 @media screen and (max-height: 642px) {
     .down_arrow {
         display: none;
     }
-}
-
-.down_arrow img {
-    max-width: 30px;
 }

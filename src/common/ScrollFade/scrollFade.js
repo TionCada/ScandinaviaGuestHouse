@@ -1,62 +1,64 @@
 import './scrollFade.css';
 
-// Minimal replacement for the unmaintained "aos" package, covering the subset this site
-// uses: data-aos="fade-*" elements fade in once the bottom of the window passes 120px
-// below their top, and fade out again when scrolled back above that point.
-// Like aos, positions are measured on init and on resize, and the last init() call sets
-// the fade duration for the whole page.
+// Scroll-linked fade for data-aos="fade-*" elements (the attribute is kept from the "aos"
+// package this replaced). Instead of playing a timed animation at a trigger point, each
+// element's opacity and a small upward drift follow its position on screen: it starts
+// appearing as its top enters the bottom of the window and is fully shown after scrolling
+// a further REVEAL_SHARE of the window height. Once shown, it stays: scrolling back up
+// never fades it out again.
+// Positions are read live on every frame, so photos loading and pushing content down
+// can never leave them out of date.
 
-const OFFSET = 120;
-const SCROLL_THROTTLE_MS = 99;
+const REVEAL_SHARE = 0.5;
+const DRIFT_PX = 24;
 const RESIZE_DEBOUNCE_MS = 50;
 
 let elements = [];
 let listening = false;
+let frameRequested = false;
+// Highest progress each element has reached, so the reveal never goes backwards
+const revealed = new WeakMap();
+// Drift currently applied to each element, to undo it when measuring its position
+const drift = new WeakMap();
 
-// Same position measurement as aos: sum of offsetTop up the offsetParent chain
-const getOffsetTop = (node) => {
-    let top = 0;
-    while (node && !isNaN(node.offsetTop)) {
-        top += node.offsetTop - (node.tagName !== 'BODY' ? node.scrollTop : 0);
-        node = node.offsetParent;
-    }
-    return top;
+const reducedMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+// Starts and ends gently, so there is no sudden change at either end of the reveal
+const smoothstep = (t) => t * t * (3 - 2 * t);
+
+const update = () => {
+    frameRequested = false;
+    const windowBottom = window.pageYOffset + window.innerHeight;
+    const maxScrollBottom = document.documentElement.scrollHeight;
+    const show = reducedMotion();
+    elements.forEach((node) => {
+        const top = node.getBoundingClientRect().top + window.pageYOffset - (drift.get(node) || 0);
+        // Elements too close to the end of the page to reach the full reveal distance
+        // get a shorter one, so they are fully shown at the bottom of the page
+        const range = Math.max(1, Math.min(window.innerHeight * REVEAL_SHARE, maxScrollBottom - top));
+        const current = show ? 1 : Math.min(1, Math.max(0, (windowBottom - top) / range));
+        const progress = Math.max(current, revealed.get(node) || 0);
+        revealed.set(node, progress);
+        const eased = smoothstep(progress);
+        node.style.opacity = eased.toFixed(3);
+        const offset = DRIFT_PX * (1 - eased);
+        drift.set(node, offset);
+        node.style.transform = offset > 0 ? `translate3d(0, ${offset.toFixed(1)}px, 0)` : 'none';
+        node.classList.toggle('aos-animate', progress >= 1);
+    });
 };
 
-const handleScroll = () => {
-    const windowBottom = window.pageYOffset + window.innerHeight;
-    elements.forEach(({node, position}) => {
-        node.classList.toggle('aos-animate', windowBottom > position);
-    });
+const requestUpdate = () => {
+    if (!frameRequested) {
+        frameRequested = true;
+        window.requestAnimationFrame(update);
+    }
 };
 
 const refresh = () => {
-    elements = Array.from(document.querySelectorAll('[data-aos]'), (node) => {
-        node.classList.add('aos-init');
-        return {node, position: getOffsetTop(node) + OFFSET};
-    });
-    handleScroll();
-};
-
-// Runs at most once per interval, including a final call after the last event
-const throttle = (fn, wait) => {
-    let last = 0;
-    let timer = null;
-    return () => {
-        const remaining = wait - (Date.now() - last);
-        if (remaining <= 0) {
-            clearTimeout(timer);
-            timer = null;
-            last = Date.now();
-            fn();
-        } else if (!timer) {
-            timer = setTimeout(() => {
-                timer = null;
-                last = Date.now();
-                fn();
-            }, remaining);
-        }
-    };
+    elements = Array.from(document.querySelectorAll('[data-aos]'));
+    elements.forEach(node => node.classList.add('aos-init'));
+    update();
 };
 
 const debounce = (fn, wait) => {
@@ -67,14 +69,28 @@ const debounce = (fn, wait) => {
     };
 };
 
-const init = ({duration = 400} = {}) => {
-    document.body.style.setProperty('--aos-duration', `${duration}ms`);
+// Re-measure when [data-aos] elements are added or removed (e.g. React re-creating them)
+const touchesFadeElements = (nodes) => Array.from(nodes).some(node =>
+    node.nodeType === 1 && (node.hasAttribute('data-aos') || node.querySelector('[data-aos]')));
+
+const observeFadeElements = () => {
+    new MutationObserver((mutations) => {
+        if (mutations.some(m => touchesFadeElements(m.addedNodes) || touchesFadeElements(m.removedNodes))) {
+            refresh();
+        }
+    }).observe(document.body, {childList: true, subtree: true});
+};
+
+const init = () => {
     refresh();
     if (!listening) {
         listening = true;
-        window.addEventListener('scroll', throttle(handleScroll, SCROLL_THROTTLE_MS));
-        window.addEventListener('resize', debounce(refresh, RESIZE_DEBOUNCE_MS));
-        window.addEventListener('orientationchange', debounce(refresh, RESIZE_DEBOUNCE_MS));
+        window.addEventListener('scroll', requestUpdate, {passive: true});
+        window.addEventListener('resize', debounce(requestUpdate, RESIZE_DEBOUNCE_MS));
+        window.addEventListener('orientationchange', debounce(requestUpdate, RESIZE_DEBOUNCE_MS));
+        // Content can move without scrolling (e.g. images loading): re-check once loaded
+        window.addEventListener('load', requestUpdate);
+        observeFadeElements();
     }
 };
 

@@ -1,6 +1,9 @@
 .container {
     background-color: #A1CAE2;
     color: white;
+    /* Text lines up with the hero video and header edges; the blue band and the
+       flag strip stay full width */
+    --edge: 5vw;
 }
 
 .container img {
@@ -8,7 +11,7 @@
 }
 
 .generalInfo {
-    padding-left: 2.5%;
+    padding-left: var(--edge);
     padding-top: 2.5%;
 }
 
@@ -19,35 +22,11 @@
     font-weight: 600;
 }
 
-.generalInfo h2 {
-    position: relative;
-    bottom: 10px;
-    font-size: 3.2rem;
-    font-family: "Open Sans", sans-serif;
-    font-weight: 600;
-}
-
 .generalInfo p {
     max-width: 300px;
     padding-top: 3%;
     font-family: "Open Sans", sans-serif;
     font-size: 1.75rem;
-}
-
-.socialNetworks {
-    max-width: 250px;
-    display: inline-block;
-    line-height: 1.7rem;
-    margin-bottom: 1.5%;
-    padding-right: 5%;
-    font-family: "Open Sans", sans-serif;
-    font-size: 1.6rem;
-    padding-left: 2.5%;
-    padding-top: 3%;
-}
-
-.socialNetworks a {
-    color: white;
 }
 
 .header {
@@ -64,9 +43,9 @@
     line-height: 1.7rem;
     min-width: 100%;
     margin-bottom: 1.5%;
-    padding-right: 3%;
+    padding-right: var(--edge);
     font-size: 1.6rem;
-    padding-left: 2.5%;
+    padding-left: var(--edge);
     padding-top: 3%;
 }
 
@@ -91,7 +70,7 @@
 }
 
 .copyright1 {
-    padding-left: 2.5%;
+    padding-left: var(--edge);
     min-width: 90%;
     padding-top: 8px;
 }
@@ -99,7 +78,7 @@
 .copyright2 {
     color: white;
     margin-bottom: 22px;
-    padding-left: 2.5%;
+    padding-left: var(--edge);
 }
 
 .copyright2:hover {
@@ -109,4 +88,10 @@
 
 .icon {
     margin-right: 8px;
+}
+
+@media screen and (max-width: 600px) {
+    .container {
+        --edge: 16px;
+    }
 }

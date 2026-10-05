@@ -20,6 +20,8 @@
 .thirdMainColumn {
     width: 500px;
     min-width: 450px;
+    /* Slide the left column 80px towards the right one to tighten the space between them */
+    margin-right: -80px;
 }
 
 .firstColumn {
@@ -44,34 +46,30 @@
     left: 200%;
     font-size: 3.5rem;
     font-weight: 600;
+    line-height: 1.2;
 }
 
 .firstColumn h3{
     display: inline-block;
     position: absolute;
-    bottom: 20px;
+    /* Rotated words start at their bottom edge; offset by the line-height difference
+       so the small word starts exactly where the big one does */
+    bottom: calc(1.2 * (3.5rem - 2rem));
     transform: rotate(-90deg);
     transform-origin: 0 0;
     left: 160%;
     font-size: 2rem;
     font-weight: 600;
-}
-
-.thirdBlock h3 {
-    position: absolute;
-    bottom: 3.4%;
-}
-
-.fourthBlock h3 {
-    position: absolute;
-    bottom: 3.3%;
+    line-height: 1.2;
 }
 
 .secondColumn img {
-    max-width: 70%;
+    max-width: 60%;
     position: relative;
     left: 22%;
     z-index: 0;
+    /* Same rounding as the hero video and the house photos */
+    border-radius: 8px;
 }
 
 .firstBlock {
@@ -144,12 +142,6 @@
     font-weight: normal;
 }
 
-.linkWrapper {
-    height: 5px;
-    position: absolute;
-    bottom: 0;
-}
-
 .camouflageForDiv {
     display: block;
     position: absolute;
@@ -159,48 +151,4 @@
     height: 280px;
     z-index: 1;
 }
-
-.secondBlock .firstColumn img {
-    display: block;
-    max-width: 140%;
-    z-index: 1;
-    position: relative;
-    left: 650%;
-    margin-top: -160%;
-    margin-left: 70%;
-}
-
-.firstBlock .firstColumn img {
-    visibility: visible;
-    display: block;
-    max-width: 140%;
-    z-index: 1;
-    position: relative;
-    left: 650%;
-    margin-top: -160%;
-    margin-left: 70%;
-}
-
-.thirdBlock .firstColumn img {
-    visibility: visible;
-    display: block;
-    max-width: 140%;
-    z-index: 1;
-    position: relative;
-    left: 650%;
-    margin-top: -160%;
-    margin-left: 70%;
-}
-
-.fourthBlock .firstColumn img {
-    visibility: visible;
-    display: block;
-    max-width: 140%;
-    z-index: 1;
-    position: relative;
-    left: 650%;
-    margin-top: -160%;
-    margin-left: 70%;
-}
-
 

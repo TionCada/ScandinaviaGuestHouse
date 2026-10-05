@@ -43,42 +43,30 @@
     left: 190%;
     font-size: 4rem;
     font-weight: 600;
+    line-height: 1.2;
 }
 
 .firstColumn h3{
     display: inline-block;
+    position: absolute;
     transform: rotate(-90deg);
     transform-origin: 0 0;
     left: 150%;
     font-size: 2.3rem;
     font-weight: 600;
-}
-
-.firstBlock h3 {
-    position: absolute;
-    bottom: 3.8%;
-}
-
-.secondBlock h3 {
-    position: absolute;
-    bottom: 3.8%;
-}
-
-.thirdBlock h3 {
-    position: absolute;
-    bottom: 3.4%;
-}
-
-.fourthBlock h3 {
-    position: absolute;
-    bottom: 3.2%;
+    /* Rotated words start at their bottom edge; offset by the line-height difference
+       so the small word starts exactly where the big one does */
+    bottom: calc(1.2 * (4rem - 2.3rem));
+    line-height: 1.2;
 }
 
 .secondColumn img {
-    max-width: 70%;
+    max-width: 60%;
     position: relative;
     left: 22%;
     z-index: -1;
+    /* Same rounding as the hero video and the house photos */
+    border-radius: 8px;
 }
 
 .firstBlock {
@@ -155,12 +143,6 @@
     letter-spacing: 0.05vw;
 }
 
-.linkWrapper {
-    height: 5px;
-    position: absolute;
-    bottom: 0;
-}
-
 .camouflageForDiv {
     display: block;
     position: absolute;
@@ -171,65 +153,7 @@
     z-index: 1;
 }
 
-.secondBlock .firstColumn img {
-    display: block;
-    max-width: 140%;
-    z-index: 1;
-    position: relative;
-    left: 650%;
-    margin-top: -160%;
-    margin-left: 70%;
-}
-
-.firstBlock .firstColumn img {
-    visibility: visible;
-    display: block;
-    max-width: 140%;
-    z-index: 1;
-    position: relative;
-    left: 650%;
-    margin-top: -160%;
-    margin-left: 70%;
-}
-
-.thirdBlock .firstColumn img {
-    visibility: visible;
-    display: block;
-    max-width: 140%;
-    z-index: 1;
-    position: relative;
-    left: 650%;
-    margin-top: -160%;
-    margin-left: 70%;
-}
-
-.fourthBlock .firstColumn img {
-    visibility: visible;
-    display: block;
-    max-width: 140%;
-    z-index: 1;
-    position: relative;
-    left: 650%;
-    margin-top: -160%;
-    margin-left: 70%;
-}
-
 @media screen and (max-width: 550px){
-    .firstBlock h3 {
-        bottom: 21px;
-    }
-
-    .secondBlock h3 {
-        bottom: 21px;
-    }
-
-    .thirdBlock h3 {
-        bottom: 18px;
-    }
-
-    .fourthBlock h3 {
-        bottom: 18px;
-    }
 
     .firstColumn h2{
         left: 160%;

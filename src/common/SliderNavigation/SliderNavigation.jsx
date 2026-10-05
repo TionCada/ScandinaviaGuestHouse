@@ -4,7 +4,6 @@ import left_arrow from "../../assets/images/other/left_arrow.png";
 import right_arrow from "../../assets/images/other/right_arrow.png";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import 'react-responsive-modal/styles.css';
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 
