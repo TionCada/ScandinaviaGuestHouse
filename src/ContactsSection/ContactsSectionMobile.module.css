@@ -1,7 +1,7 @@
 .container {
     background-color: #A1CAE2;
     color: white;
-    /* Text lines up with the hero video and header edges; the blue band and the
+    /* Text lines up with the header's outer items; the blue band and the
        flag strip stay full width */
     --edge: 5vw;
 }
@@ -10,75 +10,34 @@
     max-width: 100%;
 }
 
-.generalInfo {
-    padding-left: var(--edge);
-    padding-top: 2.5%;
-}
-
-.generalInfo h1 {
-    margin-top: 5%;
-    font-size: 4rem;
-    font-family: "Open Sans", sans-serif;
-    font-weight: 600;
-}
-
-.generalInfo p {
-    max-width: 300px;
-    padding-top: 3%;
-    font-family: "Open Sans", sans-serif;
-    font-size: 1.75rem;
-}
-
-.header {
-    font-weight: 700;
-}
-
-.contacts a {
-    color: white;
-}
-
-.contacts {
-    display: inline-block;
-    position: relative;
-    line-height: 1.7rem;
-    min-width: 100%;
-    margin-bottom: 1.5%;
-    padding-right: var(--edge);
-    font-size: 1.6rem;
-    padding-left: var(--edge);
-    padding-top: 3%;
-}
-
-.contacts p {
-    font-family: "Open Sans", sans-serif;
-}
-
 .flags img {
     margin-bottom: 1%;
 }
 
-.copyrights p {
-    display: inline-block;
-    font-family: "Open Sans", sans-serif;
-    font-size: 1.6rem;
-}
-
-.copyrights a {
-    display: inline-block;
+/* Copyright on the left and the credit on the right, on one line; on narrow screens
+   the credit wraps under the copyright */
+.copyrights {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 8px 24px;
+    padding: 16px var(--edge) 36px;
     font-family: "Open Sans", sans-serif;
     font-size: 1.6rem;
 }
 
 .copyright1 {
-    padding-left: var(--edge);
-    min-width: 90%;
-    padding-top: 8px;
+    margin: 0;
 }
 
 .copyright2 {
     color: white;
-    margin-bottom: 22px;
-    padding-left: var(--edge);
+}
+
+/* A little more room between the code icon and the words */
+.creditIcon {
+    margin-right: 4px;
 }
 
 .copyright2:hover {
@@ -86,8 +45,9 @@
     color: white;
 }
 
-.icon {
-    margin-right: 8px;
+/* Underline only the words on hover, like the contact links, not the icon or the space */
+.copyright2:hover span {
+    text-decoration: underline;
 }
 
 @media screen and (max-width: 600px) {

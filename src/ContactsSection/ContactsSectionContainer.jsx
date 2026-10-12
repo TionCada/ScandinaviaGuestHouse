@@ -3,11 +3,13 @@ import ContactsSection from "./ContactsSection";
 
 let mapStateToProps = (state) => {
     return {
-        title: state.languages.contactsSection.title,
-        infoBlock: state.languages.contactsSection.infoBlock,
         contactsHeader: state.languages.contactsSection.contacts.header,
         contactsAddress: state.languages.contactsSection.contacts.address,
         contactsPhone: state.languages.contactsSection.contacts.phone,
+        addressLabel: state.languages.contactsSection.contacts.addressLabel,
+        phoneLabel: state.languages.contactsSection.contacts.phoneLabel,
+        messengersLabel: state.languages.contactsSection.contacts.messengersLabel,
+        contactsViber: state.languages.contactsSection.contacts.viber,
         copyright: state.languages.contactsSection.copyright,
         madeBy: state.languages.contactsSection.madeBy,
         flagsXL: state.content.other.flagsXL,

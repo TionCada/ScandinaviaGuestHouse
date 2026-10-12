@@ -3,14 +3,74 @@
     /* Equal side columns (that never grow past their share) keep the logo exactly centred */
     grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
     align-items: center;
-    /* 56px logo with 20px above and below; the hero video starts right under it */
-    height: 96px;
-    /* Same side margins as the hero video, so the outer items line up with its edges */
+    /* 56px logo with 26px above and below; the hero video starts right under it */
+    height: 108px;
+    /* 5vw side margins, the same as the page's sections, so the outer items line up with them */
     padding: 0 5vw;
     background-color: #ffffff;
     color: #1f1f1f;
     font-family: "Open Sans", sans-serif;
     font-size: 1.7rem;
+}
+
+/* On the main page: transparent and white, laid over the top of the video, which fills the
+   whole first screen (HomeSection.module.css) */
+.overVideo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    background-color: transparent;
+    color: #ffffff;
+    /* A soft shadow under the white text and icons, so they read on bright footage too */
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.6);
+}
+
+/* A dark band behind the header, fading out gradually well below it, under the logo and
+   items: the stops follow a cosine curve, gentle at both ends, so it has no visible edge */
+.overVideo::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 280%;
+    /* Behind the items (the header is its own stacking layer) */
+    z-index: -1;
+    background: linear-gradient(
+        rgba(0, 0, 0, 0.600) 0%,
+        rgba(0, 0, 0, 0.590) 8%,
+        rgba(0, 0, 0, 0.560) 17%,
+        rgba(0, 0, 0, 0.512) 25%,
+        rgba(0, 0, 0, 0.450) 33%,
+        rgba(0, 0, 0, 0.378) 42%,
+        rgba(0, 0, 0, 0.300) 50%,
+        rgba(0, 0, 0, 0.222) 58%,
+        rgba(0, 0, 0, 0.150) 67%,
+        rgba(0, 0, 0, 0.088) 75%,
+        rgba(0, 0, 0, 0.040) 83%,
+        rgba(0, 0, 0, 0.010) 92%,
+        rgba(0, 0, 0, 0.000) 100%);
+    pointer-events: none;
+}
+
+/* The icons are lines, which text-shadow doesn't reach */
+.overVideo .icon {
+    filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.6));
+}
+
+.overVideo .navItem:hover {
+    color: #ffffff;
+}
+
+.overVideo .navItem:focus-visible {
+    outline-color: #ffffff;
+}
+
+/* The logo is black: turned white, with the same soft shadow */
+.overVideo .logo img {
+    filter: invert(1) drop-shadow(0 1px 6px rgba(0, 0, 0, 0.6));
 }
 
 .left {
@@ -94,7 +154,8 @@
 
 @media screen and (max-width: 600px) {
     .header {
-        height: 68px;
+        /* 44px logo with 16px above and below */
+        height: 76px;
         padding: 0 16px;
         font-size: 1.6rem;
     }

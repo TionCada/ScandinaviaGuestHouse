@@ -1,0 +1,38 @@
+/* Hidden, but in its place, until the photos have loaded and been centred; then fades in */
+.carousel {
+    opacity: 0;
+    /* Quick to start and long to settle, so it shows soon and softly */
+    transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.carousel.ready {
+    opacity: 1;
+}
+
+/* The full screen view's arrows: the same white arrows as over the carousels' photos */
+.lightboxArrow {
+    display: block;
+    width: 48px;
+    filter: invert(1) drop-shadow(0 1px 2px rgba(0, 0, 0, 0.6)) drop-shadow(0 0 10px rgba(0, 0, 0, 0.35));
+}
+
+/* The close button's cross, as big as the arrows look: about the arrows' height, with
+   lines as thin */
+.lightboxClose {
+    display: block;
+    width: 40px;
+    height: 40px;
+    color: #ffffff;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.6)) drop-shadow(0 0 10px rgba(0, 0, 0, 0.35));
+}
+
+@media screen and (max-width: 740px) {
+    .lightboxArrow {
+        width: 36px;
+    }
+
+    .lightboxClose {
+        width: 30px;
+        height: 30px;
+    }
+}

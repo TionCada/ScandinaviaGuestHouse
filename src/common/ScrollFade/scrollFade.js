@@ -1,8 +1,9 @@
 import './scrollFade.css';
 
 // Scroll-linked fade for data-aos="fade-*" elements (the attribute is kept from the "aos"
-// package this replaced). Instead of playing a timed animation at a trigger point, each
-// element's opacity and a small upward drift follow its position on screen: it starts
+// package this replaced): the photo and video blocks, not text. Instead of playing a timed
+// animation at a trigger point, each element's opacity follows its position on screen, with
+// no movement (DRIFT_PX is 0; above 0 it would also rise into place): it starts
 // appearing as its top enters the bottom of the window and is fully shown after scrolling
 // a further REVEAL_SHARE of the window height. Once shown, it stays: scrolling back up
 // never fades it out again.
@@ -10,7 +11,7 @@ import './scrollFade.css';
 // can never leave them out of date.
 
 const REVEAL_SHARE = 0.5;
-const DRIFT_PX = 24;
+const DRIFT_PX = 0;
 const RESIZE_DEBOUNCE_MS = 50;
 
 let elements = [];

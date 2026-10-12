@@ -16,7 +16,7 @@ const HomeSection = (props) => {
                 <video className={s.video} src={props.backgroundVideo} poster={props.backgroundImage}
                        autoPlay muted loop playsInline/>
                 <div className={s.overlay}/>
-                <div data-aos="fade-in" className={s.content}>
+                <div className={s.content}>
                     <h1>{props.firstTextBlock}</h1>
                     <p>{props.secondTextBlock}</p>
                 </div>

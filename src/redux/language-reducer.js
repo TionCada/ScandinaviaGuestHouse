@@ -10,6 +10,7 @@ let initialState = {
     homeSection: {...ukrainianLanguage.homeSection},
     housesSection: {...ukrainianLanguage.housesSection},
     exteriorSection: {
+        ...ukrainianLanguage.exteriorSection,
         summer: {...ukrainianLanguage.exteriorSection.summer},
         autumn: {...ukrainianLanguage.exteriorSection.autumn},
         winter: {...ukrainianLanguage.exteriorSection.winter},
@@ -32,6 +33,7 @@ const languageReducer = (state = initialState, action) => {
                 homeSection: {...tempState.homeSection},
                 housesSection: {...tempState.housesSection},
                 exteriorSection: {
+                    ...tempState.exteriorSection,
                     summer: {...tempState.exteriorSection.summer},
                     autumn: {...tempState.exteriorSection.autumn},
                     winter: {...tempState.exteriorSection.winter},
@@ -53,6 +55,7 @@ const languageReducer = (state = initialState, action) => {
                 homeSection: {...tempState.homeSection},
                 housesSection: {...tempState.housesSection},
                 exteriorSection: {
+                    ...tempState.exteriorSection,
                     summer: {...tempState.exteriorSection.summer},
                     autumn: {...tempState.exteriorSection.autumn},
                     winter: {...tempState.exteriorSection.winter},

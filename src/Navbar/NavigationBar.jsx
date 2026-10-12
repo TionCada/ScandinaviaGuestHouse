@@ -28,7 +28,7 @@ const NavigationBar = (props) => {
     const switchLanguage = () => {props.isEnglishLanguageActive ? props.switchToUkrainian() : props.switchToEnglish()};
 
     return (
-        <header className={s.header}>
+        <header className={`${s.header} ${props.overVideo ? s.overVideo : ''}`}>
             <div className={s.left}>
                 {/* Booking is done by phone: the button calls the guest house */}
                 <a className={s.navItem} href={'tel:' + props.phoneNumber.replace(/\s/g, '')}

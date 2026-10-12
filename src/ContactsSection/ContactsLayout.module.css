@@ -1,0 +1,65 @@
+/* Contacts at the top of the footer: a large heading, then the address, the phone and
+   Viber as columns of a small label over a large value (one under another on phones).
+   Side margins come from the footer's --edge, like its other lines. */
+.contacts {
+    display: grid;
+    /* Columns as wide as their text, spread over the whole width: the first at the left
+       margin, the last at the right one */
+    grid-template-columns: repeat(3, max-content);
+    justify-content: space-between;
+    align-items: start;
+    column-gap: 32px;
+    padding: clamp(40px, 5vw, 80px) var(--edge) clamp(32px, 3.5vw, 56px);
+    font-family: "Open Sans", sans-serif;
+}
+
+.heading {
+    grid-column: 1 / -1;
+    margin: 0 0 clamp(32px, 4.5vw, 72px);
+    font-family: "Open Sans", sans-serif;
+    font-size: clamp(3rem, 3.5vw, 5rem);
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+}
+
+.label {
+    margin: 0 0 8px;
+    font-size: 1.5rem;
+}
+
+.value {
+    display: block;
+    width: fit-content;
+    margin: 0;
+    font-size: clamp(1.8rem, 1.6vw, 2.3rem);
+    line-height: 1.35;
+    /* The address is written over two lines */
+    white-space: pre-line;
+}
+
+/* Links stay white, underlined on hover */
+.contacts a,
+.contacts a:hover {
+    color: #ffffff;
+}
+
+.contacts a:hover {
+    text-decoration: underline;
+}
+
+@media screen and (max-width: 740px) {
+    .contacts {
+        grid-template-columns: 1fr;
+        row-gap: 28px;
+    }
+
+    .heading {
+        margin-bottom: 8px;
+    }
+
+    .value {
+        font-size: 1.9rem;
+    }
+}

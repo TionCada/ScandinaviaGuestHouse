@@ -2,10 +2,24 @@ import backgroundImage from "../assets/images/homeSection/image1.jpg"
 import backgroundVideo from "../assets/videos/homeSection/video1.mp4"
 import bungalowImage from "../assets/images/housesSection/bungalow.jpg"
 import campingImage from "../assets/images/housesSection/camping.jpg"
-import summerImage from "../assets/images/exteriorSection/image1.jpg"
-import autumnImage from "../assets/images/exteriorSection/image2.jpg"
-import winterImage from "../assets/images/exteriorSection/image3.jpg"
-import springImage from "../assets/images/exteriorSection/image4.jpg"
+// Every photo in a house's folder, in file name order (the names start with 01, 02, ...)
+const inNameOrder = (photos) => Object.entries(photos)
+    .sort(([a], [b]) => a.localeCompare(b))
+    .map(([, url]) => url);
+const bungalowGallery = inNameOrder(import.meta.glob("../assets/images/housesSection/bungalow/*.jpg",
+    {eager: true, import: "default"}));
+const campingGallery = inNameOrder(import.meta.glob("../assets/images/housesSection/camping/*.jpg",
+    {eager: true, import: "default"}));
+// Nature photos for the main page carousel: image1.jpg, image2.jpg, ... in number order, by
+// season. The carousel shows them cropped to one tall shape; the same numbers in the "full"
+// folder are the whole, uncropped photos, opened full screen
+const inNumberOrder = (photos) => Object.entries(photos)
+    .sort(([a], [b]) => parseInt(a.match(/image(\d+)/)[1]) - parseInt(b.match(/image(\d+)/)[1]))
+    .map(([, url]) => url);
+const naturePhotos = inNumberOrder(import.meta.glob("../assets/images/exteriorSection/image*.jpg",
+    {eager: true, import: "default"}));
+const naturePhotosFull = inNumberOrder(import.meta.glob("../assets/images/exteriorSection/full/image*.jpg",
+    {eager: true, import: "default"}));
 import logo from "../assets/images/navigationMenu/logo.svg"
 import white_phone from "../assets/images/navigationMenu/white_phone.svg"
 import black_phone from "../assets/images/navigationMenu/black_phone.svg"
@@ -31,13 +45,14 @@ let initialState = {
     },
     housesSection: {
         bungalowImage: bungalowImage,
-        campingImage: campingImage
+        campingImage: campingImage,
+        // Photos on each house's page; the camping shows its cover photo until its folder has some
+        bungalowPhotos: bungalowGallery,
+        campingPhotos: campingGallery.length > 0 ? campingGallery : [campingImage]
     },
     exteriorSection: {
-        summerImage: summerImage,
-        autumnImage: autumnImage,
-        winterImage: winterImage,
-        springImage: springImage,
+        photos: naturePhotos,
+        fullPhotos: naturePhotosFull,
     },
     other: {
         down_arrow: down_arrow,
