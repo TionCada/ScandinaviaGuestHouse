@@ -1,0 +1,99 @@
+/* Styles for the shared SliderNavigation carousel on a house page: a row of photos of
+   equal height across the whole window, the current one in the middle, with white arrows
+   over them at the left and right page margins, level with their middle, as in the
+   main page's nature photos (ExteriorSection.module.css) */
+
+/* Spans the whole window, past the page's side margins */
+.gallery {
+    position: relative;
+    margin: 0 -5vw;
+}
+
+/* Slick sizes its track from the photos' widths before they have loaded, so the track can
+   come out too narrow and wrap the photos onto a second row: keep them on one line */
+.gallery :global(.slick-track) {
+    display: flex;
+}
+
+/* Space between the photos: twice this padding */
+.card {
+    padding: 0 6px;
+}
+
+/* Equal height, each photo as wide as its own proportions make it */
+.card img {
+    display: block;
+    height: var(--photo-height);
+    width: auto;
+    cursor: zoom-in;
+}
+
+/* Over the photos, level with their middle */
+.navigationSection {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    /* Let clicks and swipes through to the photos between the arrows */
+    pointer-events: none;
+}
+
+/* Lined up with the page's side margins (5vw): the arrow tips sit on the margin, past the
+   buttons' padding */
+.navArrows {
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0 calc(5vw - 4px);
+}
+
+.navArrows button {
+    padding: 4px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    pointer-events: auto;
+}
+
+.navArrows img {
+    display: block;
+    width: 48px;
+    opacity: 1;
+    /* The arrow assets are black: turned white, with a close shadow to outline the thin
+       lines and a wider soft one to darken the photo around them, so they show on any photo */
+    filter: invert(1) drop-shadow(0 1px 2px rgba(0, 0, 0, 0.6)) drop-shadow(0 0 10px rgba(0, 0, 0, 0.35));
+    transition: opacity 0.2s ease;
+}
+
+/* A little fainter on hover */
+.navArrows button:hover img {
+    opacity: 0.7;
+}
+
+/* A house with a single photo: just the photo, within the page margins */
+.single {
+    display: block;
+    height: var(--photo-height);
+    max-width: 100%;
+    object-fit: cover;
+}
+
+@media screen and (max-width: 740px) {
+    .gallery {
+        margin: 0 -16px;
+    }
+
+    .card {
+        padding: 0 4px;
+    }
+
+    /* Smaller arrows on phones, at the phone page margin (16px) */
+    .navArrows {
+        padding: 0 12px;
+    }
+
+    .navArrows img {
+        width: 36px;
+    }
+}
