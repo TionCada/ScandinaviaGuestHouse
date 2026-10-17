@@ -2,7 +2,7 @@ const englishLanguage = {
     navigationMenu: {
         thirdLink: "Contact",
         fourthLink: "Українська",
-        phoneNumber: "+380 96 472 94 50",
+        phoneNumber: "+380 63 596 89 74",
         bookLabel: "Book a stay",
         // Code of the language the switch leads to
         languageCode: "UA"
@@ -95,7 +95,7 @@ const englishLanguage = {
             viber: "Chat on Viber",
             // The line break is kept in the footer
             address: "Kam'yana Hora,\nRivne Oblast",
-            phone: "+380 96 472 9450"
+            phone: "+380 63 596 89 74"
         },
         copyright: "© 2026 SCANDINAVIA. All rights reserved.",
         madeBy: "Website by Anton Novak"
