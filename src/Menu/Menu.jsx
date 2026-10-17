@@ -1,8 +1,8 @@
 import React from 'react';
 import s from "./Menu.module.css"
-import {HashLink as Link} from "react-router-hash-link";
+import Link from "../common/HashLink/HashLink";
 import animateScrollTo from 'animated-scroll-to';
-import { faGlobeAmericas } from "@fortawesome/free-solid-svg-icons";
+import { faEarthAmericas } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const NavigationBar = (props) => {
@@ -27,10 +27,10 @@ const NavigationBar = (props) => {
                 {props.isEnglishLanguageActive
                     ? <Link to="#" className={s.link} onClick={() => {
                         props.switchToUkrainian()
-                    }}>{props.fourthLink}<FontAwesomeIcon className={s.icon} icon={faGlobeAmericas} /></Link>
+                    }}>{props.fourthLink}<FontAwesomeIcon widthAuto className={s.icon} icon={faEarthAmericas} /></Link>
                     : <Link to="#" className={s.link} onClick={() => {
                         props.switchToEnglish()
-                    }}>{props.fourthLink}<FontAwesomeIcon className={s.icon} icon={faGlobeAmericas} /></Link>
+                    }}>{props.fourthLink}<FontAwesomeIcon widthAuto className={s.icon} icon={faEarthAmericas} /></Link>
                 }
             </div>
         </div>

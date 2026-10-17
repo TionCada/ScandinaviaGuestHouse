@@ -1,14 +1,14 @@
-import {combineReducers, createStore} from "redux";
+import {configureStore} from "@reduxjs/toolkit";
 import languageReducer from "./language-reducer";
 import contentReducer from "./content-reducer";
 import menuReducer from "./menu-reducer";
 
-let reducers = combineReducers({
-    languages: languageReducer,
-    content: contentReducer,
-    menu: menuReducer
+let store = configureStore({
+    reducer: {
+        languages: languageReducer,
+        content: contentReducer,
+        menu: menuReducer
+    }
 });
-
-let store = createStore(reducers);
 
 export default store;

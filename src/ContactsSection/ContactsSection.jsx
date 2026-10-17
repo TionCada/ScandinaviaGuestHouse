@@ -1,8 +1,8 @@
 import React from 'react';
-import {useMediaQuery} from "react-responsive/src";
+import {useMediaQuery} from "react-responsive";
 import s2 from "./ContactsSectionMobile.module.css"
 import s1 from "./ContactsSection.module.css";
-import { faCamera, faPhoneAlt, faEnvelope, faMapMarkerAlt, faCode } from "@fortawesome/free-solid-svg-icons";
+import { faCamera, faPhone, faEnvelope, faLocationDot, faCode } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faYoutube, faFacebookF } from "@fortawesome/free-brands-svg-icons";
 
@@ -29,30 +29,30 @@ const ContactsSection = (props) => {
             <div className={s.contacts}>
                 <p  className={s.header}>{props.contactsHeader}</p>
                 <p>
-                    <FontAwesomeIcon className={s.icon} icon={faMapMarkerAlt} />
+                    <FontAwesomeIcon widthAuto className={s.icon} icon={faLocationDot} />
                     <a href="https://goo.gl/maps/Tn9ZTVf9xRgfjYCC6" target={"_blank"} rel={"noreferrer"}>{props.contactsAddress}</a>
                 </p>
                 <p>
-                    <FontAwesomeIcon className={s.icon} icon={faPhoneAlt} />
+                    <FontAwesomeIcon widthAuto className={s.icon} icon={faPhone} />
                     <a href={"tel:" + props.contactsPhone}>{props.contactsPhone}</a>
                 </p>
                 <p>
-                    <FontAwesomeIcon className={s.icon} icon={faEnvelope} />
+                    <FontAwesomeIcon widthAuto className={s.icon} icon={faEnvelope} />
                     <a href={"mailto:" + props.contactsEmail}>{props.contactsEmail}</a>
                 </p>
             </div>
             <div className={s.socialNetworks}>
                 <p className={s.header}>{props.socialNetworksHeader}</p>
                 <p>
-                    <FontAwesomeIcon className={s.icon} icon={faFacebookF} />
+                    <FontAwesomeIcon widthAuto className={s.icon} icon={faFacebookF} />
                     <a href="https://www.facebook.com/guest.house.scandinavia" target={"_blank"} rel={"noreferrer"}>{props.socialNetworksFacebook}</a>
                 </p>
                 <p>
-                    <FontAwesomeIcon className={s.icon} icon={faCamera} />
+                    <FontAwesomeIcon widthAuto className={s.icon} icon={faCamera} />
                     <a href="https://www.instagram.com/guest.house.scandinavia" target={"_blank"} rel={"noreferrer"}>{props.socialNetworksInstagram}</a>
                 </p>
                 <p>
-                    <FontAwesomeIcon className={s.icon} icon={faYoutube} />
+                    <FontAwesomeIcon widthAuto className={s.icon} icon={faYoutube} />
                     <a href="https://www.youtube.com/channel/UC0rO9DD7zGdKYW5ZWlDvu2w" target={"_blank"} rel={"noreferrer"}>{props.socialNetworksYoutube}</a>
                 </p>
             </div>
@@ -63,7 +63,7 @@ const ContactsSection = (props) => {
             </div>
             <div className={s.copyrights}>
                 <p className={s.copyright1}>{props.copyright}</p>
-                <a href="https://novak-anton.web.app/" target={"_blank"} rel={"noreferrer"} className={s.copyright2}><FontAwesomeIcon icon={faCode} /> {props.madeBy}</a>
+                <a href="https://novak-anton.web.app/" target={"_blank"} rel={"noreferrer"} className={s.copyright2}><FontAwesomeIcon widthAuto icon={faCode} /> {props.madeBy}</a>
             </div>
         </div>
     );

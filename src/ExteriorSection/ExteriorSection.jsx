@@ -2,9 +2,8 @@ import React, {useEffect} from 'react';
 import {NavLink} from "react-router-dom";
 import s1 from "./ExteriorSection.module.css";
 import s2 from "./ExteriorSectionMobile.module.css";
-import {useMediaQuery} from "react-responsive/src";
-import AOS from "aos";
-import 'aos/dist/aos.css';
+import {useMediaQuery} from "react-responsive";
+import ScrollFade from "../common/ScrollFade/scrollFade";
 
 const ExteriorSection = (props) => {
 
@@ -14,7 +13,7 @@ const ExteriorSection = (props) => {
     isMobile ? s = s2 : s = s1;
 
     useEffect(() => {
-        AOS.init({duration: 2000});
+        ScrollFade.init({duration: 2000});
     }, []);
 
     return (

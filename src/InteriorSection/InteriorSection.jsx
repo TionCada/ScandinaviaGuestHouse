@@ -1,10 +1,9 @@
 import SliderNavigationContainer from "../common/SliderNavigation/SliderNavigationContainer";
-import {useMediaQuery} from "react-responsive/src";
+import {useMediaQuery} from "react-responsive";
 import s2 from "./InteriorSectionMobile.module.css";
 import s1 from "./InteriorSection.module.css";
 import {useEffect} from "react";
-import AOS from "aos";
-import 'aos/dist/aos.css';
+import ScrollFade from "../common/ScrollFade/scrollFade";
 
 const InteriorSection = (props) => {
 
@@ -14,7 +13,7 @@ const InteriorSection = (props) => {
     isSmallScreen ? s = s2 : s = s1;
 
     useEffect(() => {
-        AOS.init({duration: 2000});
+        ScrollFade.init({duration: 2000});
     }, []);
 
 

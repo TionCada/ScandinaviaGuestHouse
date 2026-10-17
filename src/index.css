@@ -1,6 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
 
+/* Keep Bootstrap 4's link colours; Bootstrap 5 changed them */
+:root {
+  --bs-link-color: #007bff;
+  --bs-link-color-rgb: 0, 123, 255;
+  --bs-link-hover-color: #0056b3;
+  --bs-link-hover-color-rgb: 0, 86, 179;
+  /* Bootstrap 5 turns on smooth scrolling for the whole page, which breaks animated-scroll-to */
+  scroll-behavior: auto;
+}
+
+/* Bootstrap 5 underlines links by default; Bootstrap 4 did not */
+a {
+  text-decoration: none;
+}
+
 html {
   font-size: 10px;
   position:relative;
