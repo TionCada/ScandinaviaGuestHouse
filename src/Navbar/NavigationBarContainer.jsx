@@ -8,14 +8,13 @@ import englishLanguage from "../redux/englishLanguage";
 const menus = [ukrainianLanguage.navigationMenu, englishLanguage.navigationMenu];
 const labelVariants = {
     language: menus.map(m => m.languageCode),
-    book: menus.map(m => m.bookLabel)
+    contacts: menus.map(m => m.contactsLabel)
 };
 
 let mapStateToProps = (state) => {
     return {
         labelVariants: labelVariants,
-        bookLabel: state.languages.navigationMenu.bookLabel,
-        phoneNumber: state.languages.navigationMenu.phoneNumber,
+        contactsLabel: state.languages.navigationMenu.contactsLabel,
         fourthLink: state.languages.navigationMenu.fourthLink,
         languageCode: state.languages.navigationMenu.languageCode,
         logo: state.content.navigationMenu.logo,

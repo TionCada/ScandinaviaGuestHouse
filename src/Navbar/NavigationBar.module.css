@@ -166,14 +166,15 @@
 
     /* Bigger on phones, where 20px reads too small next to the logo */
     .icon {
-        width: 26px;
-        height: 26px;
+        width: 24px;
+        height: 24px;
     }
 }
 
-/* On narrow phones the label would run into the logo: the phone icon alone still calls */
-@media screen and (max-width: 420px) {
-    .bookLabel {
+/* The narrowest phones have no room for the label next to the logo: the icon alone still
+   leads to the contacts */
+@media screen and (max-width: 340px) {
+    .contactsLabel {
         display: none;
     }
 }
