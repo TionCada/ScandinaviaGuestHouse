@@ -142,8 +142,8 @@
 }
 
 .icon {
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
     fill: none;
     stroke: currentColor;
     stroke-width: 1.5;
@@ -163,11 +163,17 @@
     .logo img {
         height: 44px;
     }
+
+    /* Icons closer to their labels, so the items take less of the narrow header */
+    .navItem {
+        gap: 6px;
+    }
 }
 
-/* On narrow phones the label would run into the logo: the phone icon alone still calls */
-@media screen and (max-width: 420px) {
-    .bookLabel {
+/* The narrowest phones have no room for the label next to the logo: the icon alone still
+   leads to the contacts */
+@media screen and (max-width: 340px) {
+    .contactsLabel {
         display: none;
     }
 }

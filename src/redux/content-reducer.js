@@ -21,23 +21,16 @@ const naturePhotos = inNumberOrder(import.meta.glob("../assets/images/exteriorSe
 const naturePhotosFull = inNumberOrder(import.meta.glob("../assets/images/exteriorSection/full/image*.jpg",
     {eager: true, import: "default"}));
 import logo from "../assets/images/navigationMenu/logo.svg"
-import white_phone from "../assets/images/navigationMenu/white_phone.svg"
-import black_phone from "../assets/images/navigationMenu/black_phone.svg"
 import down_arrow from "../assets/images/other/down_arrow.svg"
 import flagsXL from "../assets/images/other/flagsXL.jpg"
 import flagsL from "../assets/images/other/flagsL.jpg"
 import flagsM from "../assets/images/other/flagsM.jpg"
 import flagsS from "../assets/images/other/flagsS.jpg"
 import flagsXS from "../assets/images/other/flagsXS.jpg"
-import left_arrow from "../assets/images/other/left_arrow.svg"
-import right_arrow from "../assets/images/other/right_arrow.svg"
-import loader from "../assets/images/other/loader.svg"
 
 let initialState = {
     navigationMenu: {
-        logo: logo,
-        white_phone: white_phone,
-        black_phone: black_phone
+        logo: logo
     },
     homeSection: {
         backgroundImage: backgroundImage,
@@ -60,10 +53,7 @@ let initialState = {
         flagsL: flagsL,
         flagsM: flagsM,
         flagsS: flagsS,
-        flagsXS: flagsXS,
-        left_arrow: left_arrow,
-        right_arrow: right_arrow,
-        loader: loader
+        flagsXS: flagsXS
     }
 };
 

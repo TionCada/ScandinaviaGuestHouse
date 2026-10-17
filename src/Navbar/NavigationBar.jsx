@@ -27,15 +27,24 @@ const NavigationBar = (props) => {
 
     const switchLanguage = () => {props.isEnglishLanguageActive ? props.switchToUkrainian() : props.switchToEnglish()};
 
+    // Every page ends with the contacts section: glide down to it, without changing the address
+    const scrollToContacts = (e) => {
+        const contacts = document.getElementById('ContactsSection');
+        if (contacts) {
+            e.preventDefault();
+            contacts.scrollIntoView({behavior: 'smooth'});
+        }
+    };
+
     return (
         <header className={`${s.header} ${props.overVideo ? s.overVideo : ''}`}>
             <div className={s.left}>
-                {/* Booking is done by phone: the button calls the guest house */}
-                <a className={s.navItem} href={'tel:' + props.phoneNumber.replace(/\s/g, '')}
-                   aria-label={props.bookLabel + ', ' + props.phoneNumber}>
+                {/* Leads to the contacts at the bottom of the page: phone, Viber, address */}
+                <a className={s.navItem} href="#ContactsSection" onClick={scrollToContacts}
+                   aria-label={props.contactsLabel}>
                     <PhoneIcon/>
-                    <span className={s.bookLabel}>
-                        <StableLabel text={props.bookLabel} variants={props.labelVariants.book}/>
+                    <span className={s.contactsLabel}>
+                        <StableLabel text={props.contactsLabel} variants={props.labelVariants.contacts}/>
                     </span>
                 </a>
             </div>

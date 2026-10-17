@@ -1,15 +1,10 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import s from "./ExteriorSection.module.css";
-import ScrollFade from "../common/ScrollFade/scrollFade";
 import SliderNavigationContainer from "../common/SliderNavigation/SliderNavigationContainer";
 
 // Nature around the guest house: the same carousel as on the house pages, with its arrows
 // over the sides of the photos and no counter
 const ExteriorSection = (props) => {
-
-    useEffect(() => {
-        ScrollFade.init();
-    }, []);
 
     return (
         <div id="ExteriorSection" className={s.container}>

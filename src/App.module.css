@@ -4,6 +4,9 @@
 
 .container {
     overflow-x: hidden;
+}
+
+.fadeIn {
     opacity: 0;
     animation: fadeIn 0.5s;
     animation-delay: 0.2s;

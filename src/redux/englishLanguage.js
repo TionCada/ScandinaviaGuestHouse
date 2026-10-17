@@ -1,9 +1,8 @@
 const englishLanguage = {
     navigationMenu: {
-        thirdLink: "Contact",
+        // Scrolls to the contacts at the bottom of the page
+        contactsLabel: "Contact",
         fourthLink: "Українська",
-        phoneNumber: "+380 63 596 89 74",
-        bookLabel: "Book a stay",
         // Code of the language the switch leads to
         languageCode: "UA"
     },

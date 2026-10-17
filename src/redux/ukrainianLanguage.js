@@ -1,9 +1,8 @@
 const ukrainianLanguage = {
     navigationMenu: {
-        thirdLink: "Контакти",
+        // Scrolls to the contacts at the bottom of the page
+        contactsLabel: "Контакти",
         fourthLink: "English",
-        phoneNumber: "+380 63 596 89 74",
-        bookLabel: "Забронювати",
         // Code of the language the switch leads to
         languageCode: "EN"
     },
