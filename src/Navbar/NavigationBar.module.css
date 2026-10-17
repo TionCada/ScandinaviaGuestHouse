@@ -163,6 +163,11 @@
     .logo img {
         height: 44px;
     }
+
+    /* Icons closer to their labels, so the items take less of the narrow header */
+    .navItem {
+        gap: 6px;
+    }
 }
 
 /* The narrowest phones have no room for the label next to the logo: the icon alone still
