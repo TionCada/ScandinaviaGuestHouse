@@ -1,0 +1,157 @@
+/* House page: photo carousel across the top, the house details and description below it,
+   on white like the header, with the same side margins as the main page */
+.page {
+    /* No space on top: the header's own gap under the logo, equal to the one above it,
+       is all there is between the logo and the photos */
+    /* At the bottom, the same space as the footer has above its heading (ContactsLayout.module.css),
+       so the facilities and the heading sit evenly around the footer's edge */
+    padding: 0 5vw clamp(40px, 5vw, 80px);
+    color: #3B3B3B;
+    background-color: #ffffff;
+    font-family: Helvetica, sans-serif;
+}
+
+.media {
+    /* Height of the photos (HouseGallery.module.css) */
+    --photo-height: clamp(320px, 38vw, 560px);
+}
+
+/* The page's grid: the name and details, and the description, each take half the width,
+   with the same space between them as between the facilities' columns, so the
+   description lines up with the third facilities column */
+.page {
+    --column-gap: 32px;
+    /* The space under the photos, and the same again above the facilities */
+    --section-gap: clamp(28px, 3.5vw, 48px);
+}
+
+.top {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--column-gap);
+    align-items: start;
+    margin-top: var(--section-gap);
+}
+
+.top h1 {
+    margin: 0;
+    font-size: 3.4rem;
+    /* Helvetica has no weight between regular and bold */
+    font-weight: normal;
+    line-height: 1.2;
+}
+
+/* The back arrow before the house name, lined up with the lines under it */
+/* Some space between the name and the two lines under it */
+.title {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 18px;
+}
+
+.back {
+    flex: none;
+}
+
+.back img {
+    display: block;
+    width: 48px;
+    opacity: 0.8;
+    transition: transform 0.3s ease;
+}
+
+/* Nudges left on hover, like the arrows by the houses on the main page */
+.back:hover img {
+    transform: translateX(-6px);
+}
+
+.price {
+    margin: 20px 0 0;
+    font-size: 2.4rem;
+    font-weight: bold;
+}
+
+.priceNote {
+    margin: 2px 0 0;
+    font-size: 1.2rem;
+}
+
+/* Check-in and check-out times, under the guests • rooms • area line and set the same,
+   so the name and these two lines are evenly spaced */
+.rules {
+    margin: 1px 0 0;
+    font-size: 1.8rem;
+    line-height: 1.5;
+}
+
+/* Guests • rooms • area line under the house name */
+.details {
+    margin: 0;
+    font-size: 1.8rem;
+    line-height: 1.5;
+}
+
+.description {
+    margin: 0;
+    font-size: 1.7rem;
+    line-height: 1.75;
+    white-space: pre-line;
+}
+
+/* Four columns, one per room: two under each half of the page above */
+.amenities {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px var(--column-gap);
+    margin-top: var(--section-gap);
+}
+
+.amenities h3 {
+    margin: 0 0 4px;
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.amenities ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 1.7rem;
+    line-height: 1.75;
+}
+
+/* Too narrow for four columns: two, still under the two halves above */
+@media screen and (max-width: 1000px) {
+    .amenities {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 740px) {
+    .page {
+        padding: 0 16px 37px;
+    }
+
+    .media {
+        --photo-height: 75vw;
+    }
+
+    .top {
+        grid-template-columns: 1fr;
+    }
+
+    .top h1 {
+        font-size: 2.8rem;
+    }
+
+    /* A smaller arrow on phones, as all the arrows there */
+    .back img {
+        width: 36px;
+    }
+
+    .title {
+        gap: 14px;
+        margin-bottom: 12px;
+    }
+}

@@ -1,126 +1,104 @@
 const englishLanguage = {
     navigationMenu: {
-        firstLink: "Interior",
-        secondLink: "Exterior",
-        thirdLink: "Contacts",
+        thirdLink: "Contact",
         fourthLink: "Українська",
-        phoneCall: "Call us",
-        phoneNumber: "+38 096 472 94 50"
+        phoneNumber: "+380 96 472 94 50",
+        bookLabel: "Book a stay",
+        // Code of the language the switch leads to
+        languageCode: "UA"
     },
     homeSection: {
-        firstTextBlock: "Welcome\n" +
-            "to the \n" +
-            "guest house \n" +
-            "SCANDINAVIA",
-        secondTextBlock: "We invite people, who dream \n" +
-            "about cozy atmosphere of the family \n" +
-            "vacation, to spend time \n" +
-            "in a tiny Finnish \n" +
-            "house near the forest."
+        firstTextBlock: "Welcome to the \n" +
+            "SCANDINAVIA \n" +
+            "guest houses",
+        secondTextBlock: "We invite everyone looking for \n" +
+            "a cozy family vacation to stay \n" +
+            "in our modern Scandinavian \n" +
+            "houses near the forest"
     },
-    transitionSection: {
-        header: "Náttúran",
-        subheader: "Nature",
-        quote: "\"Sometimes, one day spent in other \n" +
-            "places gives us much more then 10 \n" +
-            "years of life at home.\"",
-        author: "Anatole France\n" +
-            "(French writer)"
+    housesSection: {
+        bungalow: "Bungalow",
+        bungalowDetails: "2 guests • 2 rooms • 30 m²",
+        camping: "Camping",
+        housePage: {
+            allHouses: "All houses"
+        },
+        // DRAFT: the prices and everything about the camping below are placeholders, replace with real ones.
+        // An empty price is not shown.
+        bungalowInfo: {
+            title: "Bungalow",
+            price: "",
+            priceNote: "",
+            description: "A cozy bungalow with two bedrooms, a terrace, and a private barbecue " +
+                "area. A perfect place for a couple to relax in comfort, away from the city and surrounded by " +
+                "nature. During the colder months, underfloor heating and electric heaters keep the house warm. " +
+                "In case of a short power outage, we provide a gas heater, a portable gas stove, and a camping " +
+                "lantern. Pets are allowed by prior arrangement. Free Wi-Fi is available throughout the house.",
+            rules: "Check-in from 13:00. Check-out by 11:00.",
+            amenities: [
+                {title: "Studio", items: ["Sofa bed", "Projector for movie nights", "Dining table",
+                        "Electric cooktop", "Refrigerator", "Electric kettle", "Microwave",
+                        "Dishes and cutlery"]},
+                {title: "Bedroom", items: ["Smart TV", "Double bed", "Bed linens", "Pillows and comforters",
+                        "Small workspace"]},
+                {title: "Bathroom", items: ["Shower", "Hair dryer", "Towels", "Toiletries"]},
+                {title: "Outdoor Area", items: ["Free parking", "Private terrace with a coffee table",
+                        "Separate covered patio with a barbecue", "Outdoor swing"]}
+            ]
+        },
+        campingInfo: {
+            title: "Camping",
+            price: "",
+            priceNote: "",
+            description: "A modern tiny house with a well-designed studio, a terrace, and outdoor space to relax, right " +
+                "in the middle of the forest — a great place to enjoy nature and recharge, even over a weekend. " +
+                "During the colder months, underfloor heating and electric heaters keep the house warm. In case " +
+                "of a short power outage, we provide a gas heater, a portable gas stove, and a camping lantern. Pets are " +
+                "allowed by prior arrangement. Free Wi-Fi is available throughout the house.",
+            rules: "Check-in from 13:00. Check-out by 11:00.",
+            amenities: [
+                {title: "Studio", items: ["Smart TV", "Coffee table", "Sofa bed", "Bed linens",
+                        "Pillows and comforters", "Electric cooktop", "Refrigerator", "Electric kettle",
+                        "Dishes and cutlery"]},
+                {title: "Bathroom", items: ["Shower", "Hair dryer", "Towels", "Toiletries"]},
+                {title: "Outdoor Area", items: ["Free parking", "Private terrace with a coffee table",
+                        "Separate seating area with a fire pit", "Covered barbecue area", "Hammock"]}
+            ]
+        },
+        campingDetails: "1–2 guests • 1 room • 11 m²"
     },
     exteriorSection: {
+        title: "Moments",
         summer: {
             header: "Sommar",
-            subheader: "summer"
+            subheader: "Summer"
         },
         autumn: {
             header: "Höst",
-            subheader: "autumn"
+            subheader: "Autumn"
         },
         winter: {
             header: "Vinter",
-            subheader: "winter"
+            subheader: "Winter"
         },
         spring: {
             header: "Vår",
-            subheader: "spring"
+            subheader: "Spring"
         }
-    },
-    interiorSection: {
-        header: "Bekvämlighet",
-        subheader: "Comfort",
-        firstTextBlock: "Vacationing in the guest house \n" +
-            "SCANDINAVIA, you can enjoy \n" +
-            "connection with nature and spend time in \n" +
-            "comfortable atmosphere. Stylish design \n" +
-            "creates a special cosiness in the apartments.\n" +
-            "It's a great decision for an unforgettable \n" +
-            "vacation with the loved ones.\n",
-        secondTextBlock: [
-            "- digital television",
-            "- tableware",
-            "- three double berths, for 6 people",
-            "- terrace with panoramic windows",
-            "- bed linen and towels",
-            "- kitchen with an electric stove",
-            "- refrigerator"
-        ]
     },
     contactsSection: {
-        title: "SCANDINAVIA",
-        subtitle: "guest house",
-        infoBlock: "Any questions left?\n" +
-            "You can contact us \n" +
-            "in one of the following ways",
-        socialNetworks: {
-            header: "Follow us",
-            facebook: "Facebook",
-            instagram: "Instagram",
-            youtube: "Youtube"
-        },
         contacts: {
-            header: "Contacts",
-            address: "Rivne city, 33017",
-            phone: "+38 096 472 9450",
-            email: "greentourisminua@gmail.com"
+            header: "Contact",
+            addressLabel: "Address",
+            phoneLabel: "Call",
+            messengersLabel: "Message",
+            viber: "Chat on Viber",
+            // The line break is kept in the footer
+            address: "Kam'yana Hora,\nRivne Oblast",
+            phone: "+380 96 472 9450"
         },
-        copyright: "Copyright 2021. All rights reserved.",
-        madeBy: "Developed by Anton Novak in 2021."
-    },
-    galleryPage: {
-        winter: {
-            text: "Winter is the time of a warm clothes, \n" +
-                "hot tea and meetings with the loved ones. \n" +
-                "Dive into the atmosphere of cosiness and family \n" +
-                "vacations. Spend Winter Holidays in \n" +
-                "the SCANDINAVIA guest house. \n" +
-                "Feel the cosiness and natural warmth \n" +
-                "from the crackling firewood.",
-            author: "Our team"
-        },
-        summer: {
-            text: "\"Rest is not idleness, and to lie \n" +
-                "sometimes on the grass under trees on \n" +
-                "a summer's day, listening to the murmur \n" +
-                "of the water, or watching the clouds float \n" +
-                "across the sky, is by no means a waste of time.\"\n",
-            author: "John Lubbock"
-        },
-        autumn: {
-            text: "\"... Good, that there is an autumn, \n" +
-                "it gently and carefully prepares us for the colds. \n" +
-                "Favourite autumn. Time for reflections, hands \n" +
-                "in the pockets, mulled wine in the evenings \n" +
-                " and a pleasant melancholy\"\n",
-            author: "Elchin Safarli"
-        },
-        spring: {
-            text: "\"Spring is always a romance. It's a\n" +
-                "new desires and some kind of high spirits. \n" +
-                "It's not just a number on the calendar, but \n" +
-                "a state of mind. Spring is developing at \n" +
-                "the same rate, as our nature.\"\n",
-            author: "М. Mastroianni"
-        }
+        copyright: "© 2026 SCANDINAVIA. All rights reserved.",
+        madeBy: "Website by Anton Novak"
     }
 };
 

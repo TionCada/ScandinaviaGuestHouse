@@ -8,28 +8,17 @@ let initialState = {
     ...ukrainianLanguage,
     navigationMenu: {...ukrainianLanguage.navigationMenu},
     homeSection: {...ukrainianLanguage.homeSection},
-    transitionSection: {...ukrainianLanguage.transitionSection},
+    housesSection: {...ukrainianLanguage.housesSection},
     exteriorSection: {
+        ...ukrainianLanguage.exteriorSection,
         summer: {...ukrainianLanguage.exteriorSection.summer},
         autumn: {...ukrainianLanguage.exteriorSection.autumn},
         winter: {...ukrainianLanguage.exteriorSection.winter},
         spring: {...ukrainianLanguage.exteriorSection.spring}
     },
-    interiorSection: {
-        ...ukrainianLanguage.interiorSection,
-        secondTextBlock: [...ukrainianLanguage.interiorSection.secondTextBlock]
-    },
     contactsSection: {
         ...ukrainianLanguage.contactsSection,
-        socialNetworks: {...ukrainianLanguage.contactsSection.socialNetworks},
         contacts: {...ukrainianLanguage.contactsSection.contacts}
-    },
-    galleryPage: {
-        ...ukrainianLanguage.galleryPage,
-        summer: {...ukrainianLanguage.galleryPage.summer},
-        autumn: {...ukrainianLanguage.galleryPage.autumn},
-        winter: {...ukrainianLanguage.galleryPage.winter},
-        spring: {...ukrainianLanguage.galleryPage.spring}
     },
     isEnglishLanguageActive: false
 };
@@ -42,28 +31,17 @@ const languageReducer = (state = initialState, action) => {
                 ...state,
                 navigationMenu: {...tempState.navigationMenu},
                 homeSection: {...tempState.homeSection},
-                transitionSection: {...tempState.transitionSection},
+                housesSection: {...tempState.housesSection},
                 exteriorSection: {
+                    ...tempState.exteriorSection,
                     summer: {...tempState.exteriorSection.summer},
                     autumn: {...tempState.exteriorSection.autumn},
                     winter: {...tempState.exteriorSection.winter},
                     spring: {...tempState.exteriorSection.spring}
                 },
-                interiorSection: {
-                    ...tempState.interiorSection,
-                    secondTextBlock: [...tempState.interiorSection.secondTextBlock]
-                },
                 contactsSection: {
                     ...tempState.contactsSection,
-                    socialNetworks: {...tempState.contactsSection.socialNetworks},
                     contacts: {...tempState.contactsSection.contacts}
-                },
-                galleryPage: {
-                    ...tempState.galleryPage,
-                    summer: {...tempState.galleryPage.summer},
-                    autumn: {...tempState.galleryPage.autumn},
-                    winter: {...tempState.galleryPage.winter},
-                    spring: {...tempState.galleryPage.spring}
                 },
                 isEnglishLanguageActive: true
             };
@@ -75,28 +53,17 @@ const languageReducer = (state = initialState, action) => {
                 ...state,
                 navigationMenu: {...tempState.navigationMenu},
                 homeSection: {...tempState.homeSection},
-                transitionSection: {...tempState.transitionSection},
+                housesSection: {...tempState.housesSection},
                 exteriorSection: {
+                    ...tempState.exteriorSection,
                     summer: {...tempState.exteriorSection.summer},
                     autumn: {...tempState.exteriorSection.autumn},
                     winter: {...tempState.exteriorSection.winter},
                     spring: {...tempState.exteriorSection.spring}
                 },
-                interiorSection: {
-                    ...tempState.interiorSection,
-                    secondTextBlock: [...tempState.interiorSection.secondTextBlock]
-                },
                 contactsSection: {
                     ...tempState.contactsSection,
-                    socialNetworks: {...tempState.contactsSection.socialNetworks},
                     contacts: {...tempState.contactsSection.contacts}
-                },
-                galleryPage: {
-                    ...tempState.galleryPage,
-                    summer: {...tempState.galleryPage.summer},
-                    autumn: {...tempState.galleryPage.autumn},
-                    winter: {...tempState.galleryPage.winter},
-                    spring: {...tempState.galleryPage.spring}
                 },
                 isEnglishLanguageActive: false
             };
