@@ -1,14 +1,9 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {Link} from "react-router-dom";
 import s from "./HousesSection.module.css";
-import ScrollFade from "../common/ScrollFade/scrollFade";
 import right_arrow from "../assets/images/other/right_arrow.png";
 
 const HousesSection = (props) => {
-
-    useEffect(() => {
-        ScrollFade.init();
-    }, []);
 
     const houses = [
         {id: 'bungalow', name: props.bungalow, details: props.bungalowDetails, image: props.bungalowImage},
@@ -21,8 +16,7 @@ const HousesSection = (props) => {
                 {houses.map(house => (
                     // The photo and the caption under it lead to the house's own page
                     <Link className={s.house} to={'/' + house.id} key={house.id}>
-                        {/* The photo fades in as it is scrolled to; the caption stays */}
-                        <div data-aos="fade-in" className={s.photo}>
+                        <div className={s.photo}>
                             <img alt={house.name} src={house.image}/>
                         </div>
                         <div className={s.caption}>

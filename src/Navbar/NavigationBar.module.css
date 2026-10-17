@@ -163,6 +163,12 @@
     .logo img {
         height: 44px;
     }
+
+    /* Bigger on phones, where 20px reads too small next to the logo */
+    .icon {
+        width: 26px;
+        height: 26px;
+    }
 }
 
 /* On narrow phones the label would run into the logo: the phone icon alone still calls */

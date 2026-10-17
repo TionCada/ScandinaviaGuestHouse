@@ -1,13 +1,8 @@
-import React, {useEffect, useRef} from 'react';
+import React, {useRef} from 'react';
 import NavbarContainer from "../Navbar/NavigationBarContainer";
 import s from "./HomeSection.module.css";
-import ScrollFade from "../common/ScrollFade/scrollFade";
 
 const HomeSection = (props) => {
-
-    useEffect(() => {
-        ScrollFade.init();
-    }, []);
 
     const videoRef = useRef(null);
 

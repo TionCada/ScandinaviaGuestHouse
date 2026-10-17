@@ -1,8 +1,0 @@
-/* Hidden until scrollFade.js sets opacity from the scroll position. A short transition
-   smooths it: a block already in view when the page shows, or scrolled past quickly, would
-   otherwise jump straight to fully shown; this way it always fades in */
-[data-aos^='fade'] {
-    opacity: 0;
-    transition: opacity 0.7s ease-out;
-    will-change: opacity;
-}
