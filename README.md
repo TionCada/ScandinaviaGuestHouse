@@ -1,7 +1,3 @@
-# "Scandinavia" Guest Houses
-
----
-
 ## About the project
 
 This is a website for the “Scandinavia” guest houses, a small business focused on green tourism in Rivne, Ukraine.
