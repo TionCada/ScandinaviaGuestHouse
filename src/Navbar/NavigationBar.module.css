@@ -142,8 +142,8 @@
 }
 
 .icon {
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
     fill: none;
     stroke: currentColor;
     stroke-width: 1.5;
@@ -162,12 +162,6 @@
 
     .logo img {
         height: 44px;
-    }
-
-    /* Bigger on phones, where 20px reads too small next to the logo */
-    .icon {
-        width: 24px;
-        height: 24px;
     }
 }
 
