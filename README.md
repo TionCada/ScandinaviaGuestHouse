@@ -18,4 +18,4 @@ This is a website for the “Scandinavia” guest houses, a small business focus
 
 ## Hosting
 
-The site is served by Cloudflare Workers as static files (config in `wrangler.jsonc`).
+The site is served by Cloudflare Workers as static files.
