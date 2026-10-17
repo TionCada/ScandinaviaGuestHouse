@@ -2,7 +2,7 @@ const ukrainianLanguage = {
     navigationMenu: {
         thirdLink: "Контакти",
         fourthLink: "English",
-        phoneNumber: "+380 96 472 94 50",
+        phoneNumber: "+380 63 596 89 74",
         bookLabel: "Забронювати",
         // Code of the language the switch leads to
         languageCode: "EN"
@@ -98,7 +98,7 @@ const ukrainianLanguage = {
             viber: "Чат у Viber",
             // The line break is kept in the footer
             address: "Кам'яна Гора,\nРівненська область",
-            phone: "+380 96 472 9450"
+            phone: "+380 63 596 89 74"
         },
         copyright: "© 2026 SCANDINAVIA. Усі права захищені.",
         madeBy: "Створено Anton Novak"

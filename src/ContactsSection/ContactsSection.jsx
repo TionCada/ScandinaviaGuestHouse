@@ -41,7 +41,7 @@ const ContactsSection = (props) => {
                 <div>
                     <p className={c.label}>{props.messengersLabel}</p>
                     {/* Opens a Viber chat with this number (needs Viber installed) */}
-                    <a className={c.value} href={"viber://chat?number=" + encodeURIComponent(props.contactsPhone.replace(/\s/g, ''))}>
+                    <a className={c.value} href={"viber://chat?number=" + props.contactsPhone.replace(/\s/g, '')}>
                         {props.contactsViber}
                     </a>
                 </div>
