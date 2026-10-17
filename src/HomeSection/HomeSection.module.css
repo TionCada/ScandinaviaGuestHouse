@@ -29,6 +29,14 @@
     object-fit: cover;
 }
 
+/* The darkening, the text and the arrow let taps through to the video, so the phone's own play
+   icon (shown when autoplay is blocked) can be tapped even under the text */
+.overlay,
+.content,
+.down_arrow {
+    pointer-events: none;
+}
+
 /* Darkens the video so the white text stays readable over bright footage */
 .overlay {
     position: absolute;
