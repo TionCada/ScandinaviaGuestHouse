@@ -24,3 +24,11 @@ Clone or download the project from https://github.com/TionCada/ScandinaviaGuestH
 - install Node.js v10.19.0+
 - install npm packages
 - run local: open terminal, write to start: npm start
+
+## Deploy to Cloudflare
+
+The site is served by Cloudflare Workers as static files (config in `wrangler.jsonc`).
+
+- one time: `npx wrangler login`
+- deploy: `npm run deploy` (builds and uploads)
+- check the built site locally on Cloudflare's runtime: `npm run preview:cf`
