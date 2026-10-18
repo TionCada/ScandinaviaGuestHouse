@@ -48,8 +48,7 @@ const textSections = [
             {path: 'contactsSection.contacts.phoneLabel', label: 'Підпис над телефоном'},
             {path: 'contactsSection.contacts.messengersLabel', label: 'Підпис над Viber'},
             {path: 'contactsSection.contacts.viber', label: 'Текст посилання на Viber'},
-            {path: 'contactsSection.copyright', label: 'Копірайт'},
-            {path: 'contactsSection.madeBy', label: 'Автор сайту'}
+            {path: 'contactsSection.copyright', label: 'Копірайт'}
         ]
     },
     {
