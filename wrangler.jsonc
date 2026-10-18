@@ -5,6 +5,12 @@
 	"name": "scandinavia-guest-house",
 	"compatibility_date": "2026-10-01",
 	"main": "worker/index.js",
+	// The site's own domain (bought through Cloudflare): deploying attaches the Worker to it and
+	// creates its DNS records. Cloudflare Access can guard /admin only on a domain like this
+	"routes": [
+		{"pattern": "scandinaviastay.com", "custom_domain": true},
+		{"pattern": "www.scandinaviastay.com", "custom_domain": true}
+	],
 	"assets": {
 		"directory": "./build",
 		"binding": "ASSETS",
