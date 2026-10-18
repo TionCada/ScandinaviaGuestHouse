@@ -12,7 +12,7 @@ This is a website for the “Scandinavia” guest houses, a small business focus
 
 ## How to start the project locally
 
-- install Node.js v10.19.0+
+- install Node.js v20.19+
 - install npm packages
 - run "npm start"
 
