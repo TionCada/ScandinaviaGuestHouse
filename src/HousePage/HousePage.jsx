@@ -7,7 +7,7 @@ import SliderNavigationContainer from "../common/SliderNavigation/SliderNavigati
 import g from "./HouseGallery.module.css";
 import left_arrow from "../assets/images/other/left_arrow.png";
 
-// Full description of one house: photos, price, check-in times, description and facilities by room
+// Full description of one house: photos, check-in times, description and facilities by room
 const HousePage = ({house, labels}) => {
 
     // Open at the top, not at the scroll position of the main page
@@ -46,8 +46,6 @@ const HousePage = ({house, labels}) => {
                             <h1>{house.title}</h1>
                         </div>
                         <p className={s.details}>{house.details}</p>
-                        {house.price && <p className={s.price}>{house.price}</p>}
-                        {house.priceNote && <p className={s.priceNote}>{house.priceNote}</p>}
                         <p className={s.rules}>{house.rules}</p>
                     </div>
                     <div>

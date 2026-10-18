@@ -66,17 +66,6 @@
     transform: translateX(-6px);
 }
 
-.price {
-    margin: 20px 0 0;
-    font-size: 2.4rem;
-    font-weight: bold;
-}
-
-.priceNote {
-    margin: 2px 0 0;
-    font-size: 1.2rem;
-}
-
 /* Check-in and check-out times, under the guests • rooms • area line and set the same,
    so the name and these two lines are evenly spaced */
 .rules {

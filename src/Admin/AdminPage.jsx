@@ -54,7 +54,7 @@ const AdminPage = () => {
     const signedOut = () => setState('signedOut');
 
     useEffect(() => {
-        document.title = 'Адмінка | Scandinavia Guest House';
+        document.title = 'Редагування | Scandinavia Guest House';
         Promise.all([getSignedInUser(), getSavedContent()])
             .then(([signedIn, saved]) => {
                 const current = editable(withDefaults(saved));
@@ -152,10 +152,7 @@ const AdminPage = () => {
     return (
         <div className={s.page}>
             <header className={s.topBar}>
-                <div className={s.topBarTitle}>
-                    <strong>Адмінка</strong>
-                    <span className={s.user}>{user?.email}</span>
-                </div>
+                <span className={s.user}>{user?.email}</span>
                 <nav className={s.topBarLinks}>
                     <a href="/" target="_blank" rel="noreferrer">Відкрити сайт</a>
                     <a href="/cdn-cgi/access/logout">Вийти</a>

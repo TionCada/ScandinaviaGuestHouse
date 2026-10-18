@@ -6,8 +6,6 @@
 
 const houseFields = (id) => [
     {path: `housesSection.${id}Info.title`, label: 'Заголовок сторінки'},
-    {path: `housesSection.${id}Info.price`, label: 'Ціна', hint: 'Порожня ціна на сайті не показується'},
-    {path: `housesSection.${id}Info.priceNote`, label: 'Примітка до ціни', hint: 'Наприклад, «за ніч, до 2 гостей»'},
     {path: `housesSection.${id}Info.rules`, label: 'Заїзд і виїзд'},
     {path: `housesSection.${id}Info.description`, label: 'Опис', multiline: true},
     {path: `housesSection.${id}Info.amenities`, label: 'Що є в будиночку', type: 'amenities'}
@@ -50,18 +48,15 @@ const textSections = [
             {path: 'contactsSection.contacts.phoneLabel', label: 'Підпис над телефоном'},
             {path: 'contactsSection.contacts.messengersLabel', label: 'Підпис над Viber'},
             {path: 'contactsSection.contacts.viber', label: 'Текст посилання на Viber'},
-            {path: 'contactsSection.copyright', label: 'Копірайт'},
-            {path: 'contactsSection.madeBy', label: 'Автор сайту'}
+            {path: 'contactsSection.copyright', label: 'Копірайт'}
         ]
     },
     {
-        title: 'Шапка та підписи',
+        title: 'Шапка',
         fields: [
             {path: 'navigationMenu.contactsLabel', label: 'Кнопка контактів'},
             {path: 'navigationMenu.languageCode', label: 'Кнопка мови',
-                hint: 'Мова, на яку вона перемикає: на українській сторінці «EN»'},
-            {path: 'navigationMenu.fourthLink', label: 'Кнопка мови: підказка для екранних читалок'},
-            {path: 'housesSection.housePage.allHouses', label: 'Стрілка «назад» на сторінці будиночка'}
+                hint: 'Мова, на яку вона перемикає: на українській сторінці «EN»'}
         ]
     }
 ];

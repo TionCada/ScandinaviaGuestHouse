@@ -37,13 +37,6 @@
     border-bottom: 1px solid var(--border);
 }
 
-.topBarTitle {
-    display: flex;
-    align-items: baseline;
-    gap: 12px;
-    font-size: 18px;
-}
-
 .user {
     color: var(--muted);
     font-size: 14px;
