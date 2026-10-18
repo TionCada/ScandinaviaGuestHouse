@@ -44,7 +44,7 @@
 	// (<team>.cloudflareaccess.com) and the application's "Application Audience (AUD) Tag",
 	// both from the Zero Trust dashboard. The admin API refuses every request while they are empty
 	"vars": {
-		"ACCESS_TEAM_DOMAIN": "",
-		"ACCESS_AUD": ""
+		"ACCESS_TEAM_DOMAIN": "scandinaviastay.cloudflareaccess.com",
+		"ACCESS_AUD": "64b6e585c51822d17ee2fbb42ea1e95e7a768ff327ca27a6fce04475f650dc14"
 	}
 }
