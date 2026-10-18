@@ -1,0 +1,3 @@
+# Local settings for `wrangler dev` (copy to .dev.vars). Never used on Cloudflare.
+# Lets the admin API work on localhost without Cloudflare Access in front of it
+ACCESS_DISABLED_FOR_LOCAL_DEV=true
