@@ -53,13 +53,11 @@ const textSections = [
         ]
     },
     {
-        title: 'Шапка та підписи',
+        title: 'Шапка',
         fields: [
             {path: 'navigationMenu.contactsLabel', label: 'Кнопка контактів'},
             {path: 'navigationMenu.languageCode', label: 'Кнопка мови',
-                hint: 'Мова, на яку вона перемикає: на українській сторінці «EN»'},
-            {path: 'navigationMenu.fourthLink', label: 'Кнопка мови: підказка для екранних читалок'},
-            {path: 'housesSection.housePage.allHouses', label: 'Стрілка «назад» на сторінці будиночка'}
+                hint: 'Мова, на яку вона перемикає: на українській сторінці «EN»'}
         ]
     }
 ];
