@@ -31,11 +31,14 @@
     padding: 0 6px;
 }
 
-/* Equal height, each photo as wide as its own proportions make it */
+/* Equal height and one tall shape: photos uploaded in the admin in any shape are cropped to it
+   around their middle (the built-in ones are already cut to it); full screen shows them whole */
 .card img {
     display: block;
     height: clamp(360px, 36vw, 560px);
     width: auto;
+    aspect-ratio: 791 / 1296;
+    object-fit: cover;
     cursor: zoom-in;
 }
 

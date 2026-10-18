@@ -8,6 +8,7 @@
     "@fortawesome/react-fontawesome": "^3.5.0",
     "@reduxjs/toolkit": "^2.13.0",
     "bootstrap": "^5.3.8",
+    "jose": "^6.2.12",
     "normalize.css": "^8.0.1",
     "react": "^19.3.0",
     "react-dom": "^19.3.0",
@@ -23,7 +24,11 @@
     "build": "vite build",
     "preview": "vite preview",
     "deploy": "vite build && wrangler deploy",
-    "preview:cf": "vite build && wrangler dev"
+    "preview:cf": "vite build && wrangler dev",
+    "seed": "node scripts/seed-content.mjs",
+    "dev:worker": "vite build && wrangler dev --port 8787",
+    "db:migrate:local": "wrangler d1 migrations apply scandinavia-guest-house-content --local",
+    "db:migrate:remote": "wrangler d1 migrations apply scandinavia-guest-house-content --remote"
   },
   "type": "module",
   "devDependencies": {

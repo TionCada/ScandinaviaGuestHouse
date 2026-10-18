@@ -1,10 +1,13 @@
 import './App.module.css';
-import React, {useEffect, useRef} from 'react';
+import React, {lazy, Suspense, useEffect, useRef} from 'react';
 import s from "./App.module.css"
 import {BrowserRouter, Navigate, Route, Routes, useLocation} from "react-router-dom";
 import MainPage from "./MainPage/MainPage";
 import HousePageContainer from "./HousePage/HousePageContainer";
 import {useMediaQuery} from "react-responsive";
+
+// Loaded only when /admin is opened, so visitors never download it
+const AdminPage = lazy(() => import("./Admin/AdminPage"));
 
 // The page fades in when the site opens and on every move to a house page, hiding its carousel
 // settling into place while the page is still blank. Coming back to the main page shows it
@@ -41,6 +44,8 @@ const App = () => {
                     <Route path='/' element={<MainPage/>}/>
                     <Route path='/bungalow' element={<HousePageContainer houseId='bungalow'/>}/>
                     <Route path='/camping' element={<HousePageContainer houseId='camping'/>}/>
+                    {/* Behind Cloudflare Access: see README */}
+                    <Route path='/admin' element={<Suspense fallback={null}><AdminPage/></Suspense>}/>
                     {/* The season gallery pages were removed; send old links to the main page */}
                     <Route path='*' element={<Navigate to='/' replace/>}/>
                 </Routes>
