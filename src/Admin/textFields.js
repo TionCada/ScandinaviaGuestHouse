@@ -6,8 +6,6 @@
 
 const houseFields = (id) => [
     {path: `housesSection.${id}Info.title`, label: 'Заголовок сторінки'},
-    {path: `housesSection.${id}Info.price`, label: 'Ціна', hint: 'Порожня ціна на сайті не показується'},
-    {path: `housesSection.${id}Info.priceNote`, label: 'Примітка до ціни', hint: 'Наприклад, «за ніч, до 2 гостей»'},
     {path: `housesSection.${id}Info.rules`, label: 'Заїзд і виїзд'},
     {path: `housesSection.${id}Info.description`, label: 'Опис', multiline: true},
     {path: `housesSection.${id}Info.amenities`, label: 'Що є в будиночку', type: 'amenities'}

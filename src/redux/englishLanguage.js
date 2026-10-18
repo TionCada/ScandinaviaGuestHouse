@@ -22,12 +22,9 @@ const englishLanguage = {
         housePage: {
             allHouses: "All houses"
         },
-        // DRAFT: the prices and everything about the camping below are placeholders, replace with real ones.
-        // An empty price is not shown.
+        // DRAFT: everything about the camping below is a placeholder, replace with the real details.
         bungalowInfo: {
             title: "Bungalow",
-            price: "",
-            priceNote: "",
             description: "A cozy bungalow with two bedrooms, a terrace, and a private barbecue " +
                 "area. A perfect place for a couple to relax in comfort, away from the city and surrounded by " +
                 "nature. During the colder months, underfloor heating and electric heaters keep the house warm. " +
@@ -47,8 +44,6 @@ const englishLanguage = {
         },
         campingInfo: {
             title: "Camping",
-            price: "",
-            priceNote: "",
             description: "A modern tiny house with a well-designed studio, a terrace, and outdoor space to relax, right " +
                 "in the middle of the forest — a great place to enjoy nature and recharge, even over a weekend. " +
                 "During the colder months, underfloor heating and electric heaters keep the house warm. In case " +
