@@ -10,19 +10,14 @@ This is a website for the “Scandinavia” guest houses, a small business focus
 - Bootstrap
 - Vite
 
-## How to start the project locally
-
-- install Node.js v20.19+
-- install npm packages
-- run "npm start"
-
 ## Hosting
 
-The site is served by Cloudflare Workers as static files.
+The site runs on Cloudflare Workers at https://scandinaviastay.com (`www.` redirects there).
+`npm run deploy` builds it and uploads it; the Worker in `worker/` serves the admin's API and uploaded photos.
 
 ## Admin panel
 
-`/admin` edits the site's texts (Ukrainian and English) and its photos and video. Changes show on the site as soon as they are saved.
+`/admin` edits the site's texts and its photos and video. Changes show on the site as soon as they are saved.
 
 How it works:
 
@@ -32,16 +27,14 @@ How it works:
 - Cloudflare Access asks for sign-in (an email code) before `/admin` and `/api/admin/*` open, and the Worker checks the Access token on every admin request
 - each save keeps the previous 10 versions in the `content_history` table, to undo a mistake by hand
 
-### Setting it up on Cloudflare (once)
+## How to start the project locally
 
-1. Enable R2 in the dashboard (needs a card on the account, the free tier is enough), then create the bucket: `npx wrangler r2 bucket create scandinavia-guest-house-media`
-2. Create the database: `npx wrangler d1 create scandinavia-guest-house-content`, put the `database_id` it prints into `wrangler.jsonc`, then create its tables: `npm run db:migrate:remote`
-3. Connect the site's own domain to the Worker (Workers & Pages → the project → Settings → Domains & Routes). Access can guard a path only on a domain in your Cloudflare account, not on `*.workers.dev`
-4. In Zero Trust → Access → Applications, add a self-hosted application for that domain with the paths `admin` and `api/admin`, and a policy that allows the admins' emails. Put the team domain (`<team>.cloudflareaccess.com`) and the application's AUD tag into `ACCESS_TEAM_DOMAIN` and `ACCESS_AUD` in `wrangler.jsonc`
-5. Deploy: `npm run deploy`
-6. Move the built-in texts and photos into the admin's storage: `npm run seed -- --remote`
+- install Node.js v20.19+
+- install npm packages: `npm install`
+- run `npm start`: the site with the texts and photos built into it
 
-### Running it locally
+### With the admin panel and the Worker
 
 - one time: `cp .dev.vars.example .dev.vars` (turns the sign-in off on localhost), `npm run db:migrate:local`, `npm run seed -- --local`
-- `npm run dev:worker` (the Worker with local D1 and R2, on port 8787), and `npm start` alongside it; then open `/admin` on the Vite address
+- run `npm run dev:worker` (the Worker with local copies of the database and the photo storage, on port 8787), and `npm start` alongside it
+- the site then shows the content from the local database, and `/admin` on the Vite address opens without signing in
