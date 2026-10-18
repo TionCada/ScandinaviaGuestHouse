@@ -54,7 +54,7 @@ const AdminPage = () => {
     const signedOut = () => setState('signedOut');
 
     useEffect(() => {
-        document.title = 'Адмінка | Scandinavia Guest House';
+        document.title = 'Редагування | Scandinavia Guest House';
         Promise.all([getSignedInUser(), getSavedContent()])
             .then(([signedIn, saved]) => {
                 const current = editable(withDefaults(saved));
