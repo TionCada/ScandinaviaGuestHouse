@@ -70,23 +70,7 @@ const ukrainianLanguage = {
         campingDetails: "Для 1–2 гостей • 1 кімната • 11 м²"
     },
     exteriorSection: {
-        title: "Моменти",
-        summer: {
-            header: "Sommar",
-            subheader: "Літо"
-        },
-        autumn: {
-            header: "Höst",
-            subheader: "Осінь"
-        },
-        winter: {
-            header: "Vinter",
-            subheader: "Зима"
-        },
-        spring: {
-            header: "Vår",
-            subheader: "Весна"
-        }
+        title: "Моменти"
     },
     contactsSection: {
         contacts: {

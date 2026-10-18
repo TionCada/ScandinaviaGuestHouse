@@ -67,23 +67,7 @@ const englishLanguage = {
         campingDetails: "1–2 guests • 1 room • 11 m²"
     },
     exteriorSection: {
-        title: "Moments",
-        summer: {
-            header: "Sommar",
-            subheader: "Summer"
-        },
-        autumn: {
-            header: "Höst",
-            subheader: "Autumn"
-        },
-        winter: {
-            header: "Vinter",
-            subheader: "Winter"
-        },
-        spring: {
-            header: "Vår",
-            subheader: "Spring"
-        }
+        title: "Moments"
     },
     contactsSection: {
         contacts: {
