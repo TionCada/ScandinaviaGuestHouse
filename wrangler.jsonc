@@ -24,11 +24,6 @@
 			"database_name": "scandinavia-guest-house-content",
 			"database_id": "0bc3a24e-becd-4753-88fc-2bfdc259ae89",
 			"migrations_dir": "migrations"
-		},
-		{
-			"binding": "scandinavia_guest_house_content",
-			"database_name": "scandinavia-guest-house-content",
-			"database_id": "0bc3a24e-becd-4753-88fc-2bfdc259ae89"
 		}
 	],
 	// Photos and videos uploaded in the admin. Create it with
@@ -37,10 +32,6 @@
 		{
 			"binding": "MEDIA",
 			"bucket_name": "scandinavia-guest-house-media"
-		},
-		{
-			"bucket_name": "scandinavia-guest-house-media",
-			"binding": "scandinavia_guest_house_media"
 		}
 	],
 	// Cloudflare Access, which guards /admin and /api/admin: the team domain
