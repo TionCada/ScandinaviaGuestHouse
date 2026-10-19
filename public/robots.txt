@@ -1,3 +1,8 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
-Disallow:
+# The admin panel and its API are behind a sign-in. /api/content and /media/ stay open: the
+# pages load their texts and photos from there, and search engines need them to see the pages
+Disallow: /admin
+Disallow: /api/admin/
+
+Sitemap: https://scandinaviastay.com/sitemap.xml
