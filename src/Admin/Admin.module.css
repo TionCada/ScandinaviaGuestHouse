@@ -196,9 +196,7 @@
     border-radius: 6px;
 }
 
-.roomHeader {
-    display: flex;
-    gap: 4px;
+.roomTitle {
     margin-bottom: 6px;
 }
 

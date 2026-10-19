@@ -54,27 +54,21 @@ const TextField = ({field, texts, onChange}) => {
     );
 };
 
-// The rooms of one house in one language: a title and what it has, one item per line
+// The rooms of one house in one language: a title and what it has, one item per line. The rooms
+// themselves are fixed: they can be edited, not added or removed
 const AmenitiesList = ({rooms, onChange}) => {
     const setRoom = (index, room) => onChange(rooms.map((r, i) => i === index ? room : r));
-    const removeRoom = (index) => onChange(rooms.filter((r, i) => i !== index));
 
     return (
         <div className={s.rooms}>
             {rooms.map((room, index) => (
                 <div key={index} className={s.room}>
-                    <div className={s.roomHeader}>
-                        <input className={s.input} value={room.title} placeholder="Назва кімнати"
-                               onChange={e => setRoom(index, {...room, title: e.target.value})}/>
-                        <button type="button" className={s.iconButton} title="Видалити кімнату"
-                                aria-label="Видалити кімнату" onClick={() => removeRoom(index)}>✕</button>
-                    </div>
+                    <input className={`${s.input} ${s.roomTitle}`} value={room.title} placeholder="Назва кімнати"
+                           onChange={e => setRoom(index, {...room, title: e.target.value})}/>
                     <TextArea value={room.items.join('\n')} placeholder="Один пункт на рядок"
                               onChange={e => setRoom(index, {...room, items: e.target.value.split('\n')})}/>
                 </div>
             ))}
-            <button type="button" className={s.secondaryButton}
-                    onClick={() => onChange([...rooms, {title: '', items: []}])}>+ Кімната</button>
         </div>
     );
 };
