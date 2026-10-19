@@ -58,11 +58,6 @@ const TextField = ({field, texts, onChange}) => {
 const AmenitiesList = ({rooms, onChange}) => {
     const setRoom = (index, room) => onChange(rooms.map((r, i) => i === index ? room : r));
     const removeRoom = (index) => onChange(rooms.filter((r, i) => i !== index));
-    const moveRoom = (index, by) => {
-        const moved = [...rooms];
-        [moved[index], moved[index + by]] = [moved[index + by], moved[index]];
-        onChange(moved);
-    };
 
     return (
         <div className={s.rooms}>
@@ -71,10 +66,6 @@ const AmenitiesList = ({rooms, onChange}) => {
                     <div className={s.roomHeader}>
                         <input className={s.input} value={room.title} placeholder="Назва кімнати"
                                onChange={e => setRoom(index, {...room, title: e.target.value})}/>
-                        <button type="button" className={s.iconButton} title="Вище" aria-label="Вище"
-                                disabled={index === 0} onClick={() => moveRoom(index, -1)}>↑</button>
-                        <button type="button" className={s.iconButton} title="Нижче" aria-label="Нижче"
-                                disabled={index === rooms.length - 1} onClick={() => moveRoom(index, 1)}>↓</button>
                         <button type="button" className={s.iconButton} title="Видалити кімнату"
                                 aria-label="Видалити кімнату" onClick={() => removeRoom(index)}>✕</button>
                     </div>
