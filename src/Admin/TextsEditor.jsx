@@ -86,8 +86,8 @@ const TextField = ({field, texts, onChange}) => {
     );
 };
 
-// One room in both languages side by side: its name and what it has, one item per line. The
-// rooms themselves are fixed: they can be edited, not added or removed
+// One room in both languages side by side: what it has, one item per line. The rooms themselves
+// and their names are fixed: only their lists can be edited
 const RoomRow = ({rooms, index, setRoom}) => {
     const items = rooms.map(list => (list[index]?.items || []).join('\n'));
     const refs = useAlignedHeights(items, MIN_HEIGHT);
@@ -99,8 +99,7 @@ const RoomRow = ({rooms, index, setRoom}) => {
                 return (
                     <div key={language.code} className={s.room}>
                         <span className={s.languageName}>{language.name}</span>
-                        <input className={`${s.input} ${s.roomTitle}`} value={room.title} placeholder="Назва кімнати"
-                               onChange={e => setRoom(column, index, {...room, title: e.target.value})}/>
+                        <h4 className={s.roomTitle}>{room.title}</h4>
                         <textarea ref={refs[column]} className={s.textarea} value={items[column]}
                                   placeholder="Один пункт на рядок"
                                   onChange={e => setRoom(column, index, {...room, items: e.target.value.split('\n')})}/>
