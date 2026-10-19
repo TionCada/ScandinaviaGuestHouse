@@ -37,6 +37,13 @@ const useUploads = (onSignedOut) => {
 // (before seeding) are on the same domain, so the link's download attribute does it for them
 const downloadUrl = (url) => url.startsWith('/media/') ? `${url}?download` : url;
 
+// An arrow into a tray, in the thin line style of the site's header icons
+const DownloadIcon = () => (
+    <svg className={s.downloadIcon} viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 4v11M7 10l5 5 5-5M5 19h14"/>
+    </svg>
+);
+
 const DownloadLink = ({url, className, children, title}) => (
     <a className={className} href={downloadUrl(url)} download title={title} aria-label={title}>{children}</a>
 );
@@ -113,7 +120,7 @@ const PhotoList = ({title, hint, items, toUrl, toFullUrl = toUrl, fromUrl, onCha
                     <figure key={toUrl(item) + index} className={s.photo}>
                         <img src={toUrl(item)} alt="" loading="lazy"/>
                         <figcaption className={s.photoActions}>
-                            <DownloadLink url={toFullUrl(item)} className={s.iconButton} title="Скачати">↓</DownloadLink>
+                            <DownloadLink url={toFullUrl(item)} className={s.iconButton} title="Скачати"><DownloadIcon/></DownloadLink>
                             <button type="button" className={s.iconButton} title="Раніше" aria-label="Раніше"
                                     disabled={index === 0} onClick={() => move(index, -1)}>←</button>
                             <button type="button" className={s.iconButton} title="Пізніше" aria-label="Пізніше"

@@ -371,6 +371,16 @@ a.iconButton {
 }
 
 /* The buttons share the tile's width, so all four fit on narrow tiles too */
+.downloadIcon {
+    width: 18px;
+    height: 18px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
 .photoActions .iconButton {
     flex: 1 1 0;
     width: auto;
