@@ -171,7 +171,9 @@
 }
 
 .textarea {
-    resize: vertical;
+    /* The height follows the text (TextsEditor.jsx) */
+    resize: none;
+    overflow: hidden;
 }
 
 .input:focus,
@@ -181,15 +183,11 @@
     border-color: transparent;
 }
 
-.rooms {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    align-items: flex-start;
+.roomRow + .roomRow {
+    margin-top: 12px;
 }
 
 .room {
-    width: 100%;
     padding: 10px;
     background: #faf9f7;
     border: 1px solid #eeebe6;
