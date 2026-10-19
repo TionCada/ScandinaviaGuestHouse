@@ -24,39 +24,21 @@ const textSections = [
         title: 'Будиночки на головній',
         fields: [
             {path: 'housesSection.bungalow', label: 'Бунгало: назва'},
-            {path: 'housesSection.bungalowDetails', label: 'Бунгало: гості, кімнати, площа'},
+            {path: 'housesSection.bungalowDetails', label: 'Бунгало: короткий опис'},
             {path: 'housesSection.camping', label: 'Кемпінг: назва'},
-            {path: 'housesSection.campingDetails', label: 'Кемпінг: гості, кімнати, площа'}
+            {path: 'housesSection.campingDetails', label: 'Кемпінг: короткий опис'}
         ]
     },
     {title: 'Сторінка бунгало', fields: houseFields('bungalow')},
     {title: 'Сторінка кемпінгу', fields: houseFields('camping')},
-    {
-        title: 'Моменти',
-        fields: [
-            {path: 'exteriorSection.title', label: 'Заголовок каруселі'}
-        ]
-    },
     {
         title: 'Контакти (внизу кожної сторінки)',
         fields: [
             {path: 'contactsSection.contacts.phone', label: 'Номер телефону', shared: true,
                 hint: 'Той самий номер для дзвінка й Viber, в обох мовах'},
             {path: 'contactsSection.contacts.address', label: 'Адреса', multiline: true},
-            {path: 'contactsSection.contacts.header', label: 'Заголовок'},
-            {path: 'contactsSection.contacts.addressLabel', label: 'Підпис над адресою'},
-            {path: 'contactsSection.contacts.phoneLabel', label: 'Підпис над телефоном'},
-            {path: 'contactsSection.contacts.messengersLabel', label: 'Підпис над Viber'},
             {path: 'contactsSection.contacts.viber', label: 'Текст посилання на Viber'},
             {path: 'contactsSection.copyright', label: 'Копірайт'}
-        ]
-    },
-    {
-        title: 'Шапка',
-        fields: [
-            {path: 'navigationMenu.contactsLabel', label: 'Кнопка контактів'},
-            {path: 'navigationMenu.languageCode', label: 'Кнопка мови',
-                hint: 'Мова, на яку вона перемикає: на українській сторінці «EN»'}
         ]
     }
 ];
