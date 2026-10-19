@@ -5,7 +5,6 @@
 //   type "amenities": the lists of what each room has, edited per language
 
 const houseFields = (id) => [
-    {path: `housesSection.${id}Info.title`, label: 'Заголовок сторінки'},
     {path: `housesSection.${id}Info.rules`, label: 'Заїзд і виїзд'},
     {path: `housesSection.${id}Info.description`, label: 'Опис', multiline: true},
     {path: `housesSection.${id}Info.amenities`, label: 'Що є в будиночку', type: 'amenities'}
@@ -23,9 +22,7 @@ const textSections = [
     {
         title: 'Будиночки на головній',
         fields: [
-            {path: 'housesSection.bungalow', label: 'Бунгало: назва'},
             {path: 'housesSection.bungalowDetails', label: 'Бунгало: короткий опис'},
-            {path: 'housesSection.camping', label: 'Кемпінг: назва'},
             {path: 'housesSection.campingDetails', label: 'Кемпінг: короткий опис'}
         ]
     },
