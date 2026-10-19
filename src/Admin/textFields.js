@@ -32,12 +32,6 @@ const textSections = [
     {title: 'Сторінка бунгало', fields: houseFields('bungalow')},
     {title: 'Сторінка кемпінгу', fields: houseFields('camping')},
     {
-        title: 'Моменти',
-        fields: [
-            {path: 'exteriorSection.title', label: 'Заголовок каруселі'}
-        ]
-    },
-    {
         title: 'Контакти (внизу кожної сторінки)',
         fields: [
             {path: 'contactsSection.contacts.phone', label: 'Номер телефону', shared: true,
