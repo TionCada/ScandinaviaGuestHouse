@@ -17,7 +17,7 @@ const HousePage = ({house, labels}) => {
 
     useEffect(() => {
         const previousTitle = document.title;
-        document.title = house.name + ' | Scandinavia Guest House';
+        document.title = house.name + ' | Scandinavia Guest Houses';
         return () => {
             document.title = previousTitle;
         };
