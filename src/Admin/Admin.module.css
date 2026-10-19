@@ -171,7 +171,9 @@
 }
 
 .textarea {
-    resize: vertical;
+    /* The height follows the text (TextsEditor.jsx) */
+    resize: none;
+    overflow: hidden;
 }
 
 .input:focus,
@@ -181,25 +183,21 @@
     border-color: transparent;
 }
 
-.rooms {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    align-items: flex-start;
+.roomRow + .roomRow {
+    margin-top: 12px;
 }
 
 .room {
-    width: 100%;
     padding: 10px;
     background: #faf9f7;
     border: 1px solid #eeebe6;
     border-radius: 6px;
 }
 
-.roomHeader {
-    display: flex;
-    gap: 4px;
-    margin-bottom: 6px;
+.roomTitle {
+    margin: 0 0 6px;
+    font-size: 15px;
+    font-weight: 600;
 }
 
 /* Buttons */
@@ -373,6 +371,16 @@ a.iconButton {
 }
 
 /* The buttons share the tile's width, so all four fit on narrow tiles too */
+.downloadIcon {
+    width: 18px;
+    height: 18px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
 .photoActions .iconButton {
     flex: 1 1 0;
     width: auto;

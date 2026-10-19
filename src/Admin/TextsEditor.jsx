@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useCallback, useEffect, useLayoutEffect, useRef} from 'react';
 import s from "./Admin.module.css";
 import textSections from "./textFields";
 
@@ -15,15 +15,45 @@ export const setIn = (object, path, value) => {
     return {...object, [key]: rest.length === 0 ? value : setIn(object?.[key] ?? {}, rest.join('.'), value)};
 };
 
-// A text box that grows with its text
-const TextArea = (props) => (
-    <textarea {...props} className={s.textarea}
-              rows={Math.max(2, (props.value || '').split('\n').length + 1)}/>
-);
+// Text boxes for the same text in both languages: each grows with its text, and both take the
+// height of the taller one, so the two languages line up side by side. Returns a ref for each
+const useAlignedHeights = (values, minHeight) => {
+    const areas = useRef([]);
+    const fit = useCallback(() => {
+        const present = areas.current.filter(Boolean);
+        present.forEach(area => {
+            area.style.height = 'auto';
+        });
+        // scrollHeight leaves out the 1px borders
+        const height = Math.max(minHeight, ...present.map(area => area.scrollHeight + 2));
+        present.forEach(area => {
+            area.style.height = `${height}px`;
+        });
+    }, [minHeight]);
+
+    useLayoutEffect(fit, [fit, ...values]);
+    // Narrower or wider columns wrap the text differently
+    useEffect(() => {
+        window.addEventListener('resize', fit);
+        return () => window.removeEventListener('resize', fit);
+    }, [fit]);
+
+    return values.map((value, index) => (area) => {
+        areas.current[index] = area;
+    });
+};
+
+// Smallest heights: long texts such as the house descriptions get more room to read them whole
+const MIN_HEIGHT = 64;
+const LARGE_MIN_HEIGHT = 240;
 
 const TextField = ({field, texts, onChange}) => {
     const setText = (language, value) => onChange(setIn(texts, `${language}.${field.path}`, value));
-    const Input = field.multiline ? TextArea : 'input';
+    const values = LANGUAGES.map(language => getIn(texts[language.code], field.path) ?? '');
+    const refs = useAlignedHeights(field.multiline ? values : [], field.large ? LARGE_MIN_HEIGHT : MIN_HEIGHT);
+    const inputProps = (index) => field.multiline
+        ? {as: 'textarea', className: s.textarea, ref: refs[index]}
+        : {as: 'input', className: s.input};
 
     if (field.shared) {
         const setBoth = (value) => onChange(setIn(setIn(texts, `uk.${field.path}`, value), `en.${field.path}`, value));
@@ -31,8 +61,7 @@ const TextField = ({field, texts, onChange}) => {
             <div className={s.field}>
                 <label className={s.fieldLabel}>{field.label}</label>
                 {field.hint && <p className={s.hint}>{field.hint}</p>}
-                <Input className={s.input} value={getIn(texts.uk, field.path) ?? ''}
-                       onChange={e => setBoth(e.target.value)}/>
+                <input className={s.input} value={values[0]} onChange={e => setBoth(e.target.value)}/>
             </div>
         );
     }
@@ -42,58 +71,63 @@ const TextField = ({field, texts, onChange}) => {
             <label className={s.fieldLabel}>{field.label}</label>
             {field.hint && <p className={s.hint}>{field.hint}</p>}
             <div className={s.languages}>
-                {LANGUAGES.map(language => (
-                    <div key={language.code}>
-                        <span className={s.languageName}>{language.name}</span>
-                        <Input className={s.input} value={getIn(texts[language.code], field.path) ?? ''}
-                               onChange={e => setText(language.code, e.target.value)}/>
-                    </div>
-                ))}
+                {LANGUAGES.map((language, index) => {
+                    const {as: Input, ...props} = inputProps(index);
+                    return (
+                        <div key={language.code}>
+                            <span className={s.languageName}>{language.name}</span>
+                            <Input {...props} value={values[index]}
+                                   onChange={e => setText(language.code, e.target.value)}/>
+                        </div>
+                    );
+                })}
             </div>
         </div>
     );
 };
 
-// The rooms of one house in one language: a title and what it has, one item per line
-const AmenitiesList = ({rooms, onChange}) => {
-    const setRoom = (index, room) => onChange(rooms.map((r, i) => i === index ? room : r));
-    const removeRoom = (index) => onChange(rooms.filter((r, i) => i !== index));
-
+// One room in both languages side by side: what it has, one item per line. The rooms themselves
+// and their names are fixed: only their lists can be edited
+const RoomRow = ({rooms, index, setRoom}) => {
+    const items = rooms.map(list => (list[index]?.items || []).join('\n'));
+    const refs = useAlignedHeights(items, MIN_HEIGHT);
     return (
-        <div className={s.rooms}>
-            {rooms.map((room, index) => (
-                <div key={index} className={s.room}>
-                    <div className={s.roomHeader}>
-                        <input className={s.input} value={room.title} placeholder="Назва кімнати"
-                               onChange={e => setRoom(index, {...room, title: e.target.value})}/>
-                        <button type="button" className={s.iconButton} title="Видалити кімнату"
-                                aria-label="Видалити кімнату" onClick={() => removeRoom(index)}>✕</button>
+        <div className={`${s.languages} ${s.roomRow}`}>
+            {LANGUAGES.map((language, column) => {
+                const room = rooms[column][index];
+                if (!room) return <div key={language.code}/>;
+                return (
+                    <div key={language.code} className={s.room}>
+                        <span className={s.languageName}>{language.name}</span>
+                        <h4 className={s.roomTitle}>{room.title}</h4>
+                        <textarea ref={refs[column]} className={s.textarea} value={items[column]}
+                                  placeholder="Один пункт на рядок"
+                                  onChange={e => setRoom(column, index, {...room, items: e.target.value.split('\n')})}/>
                     </div>
-                    <TextArea value={room.items.join('\n')} placeholder="Один пункт на рядок"
-                              onChange={e => setRoom(index, {...room, items: e.target.value.split('\n')})}/>
-                </div>
-            ))}
-            <button type="button" className={s.secondaryButton}
-                    onClick={() => onChange([...rooms, {title: '', items: []}])}>+ Кімната</button>
+                );
+            })}
         </div>
     );
 };
 
-const AmenitiesField = ({field, texts, onChange}) => (
-    <div className={s.field}>
-        <label className={s.fieldLabel}>{field.label}</label>
-        <p className={s.hint}>Кожна мова має свій список. Один пункт на рядок</p>
-        <div className={s.languages}>
-            {LANGUAGES.map(language => (
-                <div key={language.code}>
-                    <span className={s.languageName}>{language.name}</span>
-                    <AmenitiesList rooms={getIn(texts[language.code], field.path) || []}
-                                   onChange={rooms => onChange(setIn(texts, `${language.code}.${field.path}`, rooms))}/>
-                </div>
+const AmenitiesField = ({field, texts, onChange}) => {
+    const rooms = LANGUAGES.map(language => getIn(texts[language.code], field.path) || []);
+    const setRoom = (column, index, room) => {
+        const code = LANGUAGES[column].code;
+        onChange(setIn(texts, `${code}.${field.path}`, rooms[column].map((r, i) => i === index ? room : r)));
+    };
+    const count = Math.max(...rooms.map(list => list.length));
+
+    return (
+        <div className={s.field}>
+            <label className={s.fieldLabel}>{field.label}</label>
+            <p className={s.hint}>Один пункт на рядок</p>
+            {Array.from({length: count}, (_, index) => (
+                <RoomRow key={index} rooms={rooms} index={index} setRoom={setRoom}/>
             ))}
         </div>
-    </div>
-);
+    );
+};
 
 // Empty lines left while typing in the lists are dropped before saving
 export const tidyTexts = (texts) => {

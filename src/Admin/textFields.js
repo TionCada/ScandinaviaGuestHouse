@@ -1,12 +1,12 @@
 // The texts the admin can edit, grouped as on the site. "path" is where the text sits in each
 // language's texts (src/redux/ukrainianLanguage.js); every field is edited in both languages
 // side by side, except "shared" ones, which are the same in both (one input sets both).
-//   multiline: a larger box, where line breaks are kept
+//   multiline: a larger box, where line breaks are kept; large: larger still, for long texts
 //   type "amenities": the lists of what each room has, edited per language
 
 const houseFields = (id) => [
     {path: `housesSection.${id}Info.rules`, label: 'Заїзд і виїзд'},
-    {path: `housesSection.${id}Info.description`, label: 'Опис', multiline: true},
+    {path: `housesSection.${id}Info.description`, label: 'Опис', multiline: true, large: true},
     {path: `housesSection.${id}Info.amenities`, label: 'Що є в будиночку', type: 'amenities'}
 ];
 
