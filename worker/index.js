@@ -4,7 +4,8 @@ import {verifyAccess} from './access.js';
 // in wrangler.jsonc); every other request goes straight to the built site's files.
 //
 //   GET  /api/content         the site's texts and links to its photos, saved in the admin
-//   GET  /media/<key>         a photo or video uploaded in the admin (from R2)
+//   GET  /media/<key>         a photo or video uploaded in the admin (from R2); with ?download,
+//                             as a file to save, under the name it was uploaded with
 //   GET  /api/admin/me        who is signed in to the admin
 //   PUT  /api/admin/content   save the texts and photo links
 //   POST /api/admin/media     upload a photo or video
@@ -41,7 +42,7 @@ export default {
                 return await getContent(env);
             }
             if (path.startsWith('/media/') && (method === 'GET' || method === 'HEAD')) {
-                return await getMedia(request, env, decodeURIComponent(path.slice('/media/'.length)));
+                return await getMedia(request, env, url, decodeURIComponent(path.slice('/media/'.length)));
             }
             if (path.startsWith('/api/admin/')) {
                 const user = await verifyAccess(request, env);
@@ -173,7 +174,7 @@ const uploadMedia = async (request, env, url) => {
 
 // Serves an uploaded file, with byte ranges: Safari on iPhone plays a video only if it can ask
 // for parts of it
-const getMedia = async (request, env, key) => {
+const getMedia = async (request, env, url, key) => {
     if (!key) {
         return json({error: 'not found'}, 404);
     }
@@ -189,6 +190,9 @@ const getMedia = async (request, env, key) => {
         return json({error: 'not found'}, 404);
     }
     const headers = mediaHeaders(object);
+    if (url.searchParams.has('download')) {
+        headers.set('content-disposition', attachment(key, object.customMetadata?.originalName));
+    }
     // The browser's copy is still current
     if (!('body' in object)) {
         return new Response(null, {status: 304, headers});
@@ -204,6 +208,16 @@ const getMedia = async (request, env, key) => {
     }
     headers.set('content-length', String(object.size));
     return new Response(object.body, {headers});
+};
+
+// "Save as" under the uploaded file's own name, with the extension of what is stored (photos are
+// saved as JPEG on upload, whatever they were); files without a recorded name keep the key's
+const attachment = (key, originalName) => {
+    const extension = key.slice(key.lastIndexOf('.'));
+    const base = (originalName || key.split('/').pop()).replace(/\.[^.]*$/, '') || 'file';
+    const name = base + extension;
+    const ascii = name.replace(/[^\x20-\x7e]/g, '_').replace(/["\\]/g, '_');
+    return `attachment; filename="${ascii}"; filename*=UTF-8''${encodeURIComponent(name)}`;
 };
 
 const mediaHeaders = (object) => {

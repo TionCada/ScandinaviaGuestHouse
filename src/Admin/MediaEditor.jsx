@@ -33,6 +33,14 @@ const useUploads = (onSignedOut) => {
     return {pending, error, upload};
 };
 
+// Uploaded files come as a file to save, under their own name; the photos built into the site
+// (before seeding) are on the same domain, so the link's download attribute does it for them
+const downloadUrl = (url) => url.startsWith('/media/') ? `${url}?download` : url;
+
+const DownloadLink = ({url, className, children, title}) => (
+    <a className={className} href={downloadUrl(url)} download title={title} aria-label={title}>{children}</a>
+);
+
 const FilePicker = ({accept, multiple, label, onFiles, disabled}) => {
     const input = useRef(null);
     return (
@@ -72,8 +80,11 @@ const SingleMedia = ({title, hint, url, video, onReplace, onSignedOut}) => {
                     : <img src={url} alt=""/>}
                 {pending > 0 && <div className={s.uploading}>Завантаження…</div>}
             </div>
-            <FilePicker accept={video ? 'video/mp4' : 'image/*'} label={video ? 'Замінити відео' : 'Замінити фото'}
-                        disabled={pending > 0} onFiles={replace}/>
+            <div className={s.singleActions}>
+                <FilePicker accept={video ? 'video/mp4' : 'image/*'} label={video ? 'Замінити відео' : 'Замінити фото'}
+                            disabled={pending > 0} onFiles={replace}/>
+                <DownloadLink url={url} className={s.secondaryButton}>Скачати</DownloadLink>
+            </div>
             {warning && <p className={s.warning}>{warning}</p>}
             {error && <p className={s.error}>{error}</p>}
         </div>
@@ -81,7 +92,8 @@ const SingleMedia = ({title, hint, url, video, onReplace, onSignedOut}) => {
 };
 
 // A list of photos in the order the site shows them
-const PhotoList = ({title, hint, items, toUrl, fromUrl, onChange, onSignedOut}) => {
+// toUrl: the photo shown in the list; toFullUrl: the one to download (the whole Moments photo)
+const PhotoList = ({title, hint, items, toUrl, toFullUrl = toUrl, fromUrl, onChange, onSignedOut}) => {
     const {pending, error, upload} = useUploads(onSignedOut);
 
     const move = (index, by) => onChange(list => {
@@ -102,6 +114,7 @@ const PhotoList = ({title, hint, items, toUrl, fromUrl, onChange, onSignedOut}) 
                         <img src={toUrl(item)} alt="" loading="lazy"/>
                         <figcaption className={s.photoActions}>
                             <span className={s.photoNumber}>{index + 1}</span>
+                            <DownloadLink url={toFullUrl(item)} className={s.iconButton} title="Скачати">↓</DownloadLink>
                             <button type="button" className={s.iconButton} title="Раніше" aria-label="Раніше"
                                     disabled={index === 0} onClick={() => move(index, -1)}>←</button>
                             <button type="button" className={s.iconButton} title="Пізніше" aria-label="Пізніше"
@@ -158,7 +171,7 @@ const MediaEditor = ({media, onChange, onSignedOut}) => {
                        hint="Без фото сторінка показує обкладинку"
                        onChange={setField('campingPhotos')} onSignedOut={onSignedOut}/>
             <PhotoList title="Моменти" items={media.moments}
-                       toUrl={moment => moment.src} fromUrl={url => ({src: url, full: url})}
+                       toUrl={moment => moment.src} toFullUrl={moment => moment.full || moment.src} fromUrl={url => ({src: url, full: url})}
                        hint="У каруселі фото обрізаються до вертикальної форми по центру, на весь екран відкриваються цілими"
                        onChange={setField('moments')} onSignedOut={onSignedOut}/>
         </div>

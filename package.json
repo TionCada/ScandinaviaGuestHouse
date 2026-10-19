@@ -26,7 +26,7 @@
     "deploy": "vite build && wrangler deploy",
     "preview:cf": "vite build && wrangler dev",
     "seed": "node scripts/seed-content.mjs",
-    "dev:worker": "vite build && wrangler dev --port 8787",
+    "dev:worker": "vite build && wrangler dev --port 8787 --local-upstream localhost:8787",
     "db:migrate:local": "wrangler d1 migrations apply scandinavia-guest-house-content --local",
     "db:migrate:remote": "wrangler d1 migrations apply scandinavia-guest-house-content --remote"
   },
