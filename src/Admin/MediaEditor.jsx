@@ -113,7 +113,6 @@ const PhotoList = ({title, hint, items, toUrl, toFullUrl = toUrl, fromUrl, onCha
                     <figure key={toUrl(item) + index} className={s.photo}>
                         <img src={toUrl(item)} alt="" loading="lazy"/>
                         <figcaption className={s.photoActions}>
-                            <span className={s.photoNumber}>{index + 1}</span>
                             <DownloadLink url={toFullUrl(item)} className={s.iconButton} title="Скачати">↓</DownloadLink>
                             <button type="button" className={s.iconButton} title="Раніше" aria-label="Раніше"
                                     disabled={index === 0} onClick={() => move(index, -1)}>←</button>

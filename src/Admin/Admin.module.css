@@ -368,15 +368,15 @@ a.iconButton {
 
 .photoActions {
     display: flex;
-    align-items: center;
     gap: 4px;
     padding: 6px;
 }
 
-.photoNumber {
-    flex: 1;
-    color: var(--muted);
-    font-size: 13px;
+/* The buttons share the tile's width, so all four fit on narrow tiles too */
+.photoActions .iconButton {
+    flex: 1 1 0;
+    width: auto;
+    min-width: 0;
 }
 
 /* Save bar */
